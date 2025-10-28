@@ -1,7 +1,7 @@
 /* === 基础变量与通用重置（补缺） === */
 :root{
   --bg:#ffffff;
-  --text:#1a1a1a;
+  --text:#ffffff;
   --muted:#6b7280;
   --brand:#0f172a;
   --link:#2563eb;
@@ -9,6 +9,19 @@
   --border:#e5e7eb;
   --radius:14px;
 }
+
+html, body { height: 100%; }             /* 可用 min-height:100vh 替代 */
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 让页脚自动占用剩余空间，贴在最底部 */
+.site-footer{ 
+  margin-top: auto;        /* 保留你已有的边框/背景等样式 */
+}
+
 
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
@@ -21,6 +34,17 @@ body{
 /* === 容器（补缺） === */
 .container{ max-width:1100px; margin:0 auto; padding:0 18px; }
 
+main.container.narrow{
+  background: rgba(255,255,255,0.50);      /* 比 header(0.78) 更“暗”一点 */
+  backdrop-filter: saturate(1.05) blur(4px);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  padding: 18px 20px;                       /* 给内容一点内边距 */
+  margin-top: 14px;                         /* 与 header 拉开距离 */
+  box-shadow: 0 10px 28px rgba(0,0,0,.15);  /* 轻阴影让面板浮起 */
+  color: #111; 
+}
+
 /* === 顶部导航布局（补缺；与你已有 .soft-header 不冲突） === */
 .site-header{
   border-bottom:1px solid var(--border);
@@ -32,7 +56,7 @@ body{
 
 /* 右侧链接行（补缺） */
 .site-header nav a{
-  color:var(--text);
+  color:var(--brand);
   text-decoration:none;
   margin-left:18px;
   padding:6px 10px;
@@ -103,13 +127,20 @@ h2{ margin:1.6rem 0 .6rem; }
 .project .btn{ margin-top:8px; }
 
 /* === 页脚（补缺；与你的 .soft-footer 不冲突） === */
-.site-footer{ border-top:1px solid var(--border); margin-top:40px; }
-.site-footer .container{ padding:16px 18px; color:var(--muted); font-size:.95rem; }
+.site-footer{
+  border-top:1px solid var(--border);
+  margin-top:auto;        /* 保留贴底 */
+}
+.site-footer .container{
+  padding:16px 18px;
+  color:var(--muted);
+  font-size:.95rem;
+}
 
 
 /* === soft 主题（index 用到） === */
 :root{
-  --bg-soft: #e6e6e6;
+  --bg-soft: #e6e6e670;
 }
 body.soft-bg{ background: var(--bg-soft); }
 .soft-header{ background: var(--bg-soft); border-bottom: 0; }
@@ -133,21 +164,21 @@ body.soft-bg{ background: var(--bg-soft); }
 }
 .hero-lead{ font-size: 1.06rem; margin: 0 0 12px; }
 
-/* 右侧展示图 */
-.hero-right{
-  margin: 0;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 14px 36px rgba(0,0,0,.10);
+.hero-right .hero-media{ position: relative; }
+
+/* 图片 & 视频统一尺寸（和你之前 img 的规则一致） */
+.hero-right .hero-video,
+.hero-right .hero-image{
+  width:100%;
+  height:clamp(500px, 30vh, 600px);
+  object-fit:cover;
+  display:none;                 /* 默认都隐藏 */
+  background:#d7d7d7;
+  border-radius:14px;
 }
-.hero-right img{
-  width: 100%;
-  height: clamp(340px, 56vh, 600px);
-  object-fit: cover;
-  display: block;
-  background: #d7d7d7;
-  border-radius: 14px;
-}
+
+/* 播放中的元素显示 */
+.hero-right .is-active{ display:block; }
 
 /* 个人卡片的紧凑版（叠在 hero 左侧上方） */
 .profile.small{
@@ -168,6 +199,10 @@ body.soft-bg{ background: var(--bg-soft); }
 /* Featured Projects 与上方留白 */
 main.container > .mt{ margin-top: 34px; }
 
+main.container{
+  padding-bottom: 48px;     /* 调整数值就能改留白大小 */
+}
+
 /* 响应式：小屏上下排列 */
 @media (max-width: 960px){
   .hero{ grid-template-columns: 1fr; gap: 18px; }
@@ -180,6 +215,7 @@ main.container > .mt{ margin-top: 34px; }
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 10px;
+  margin-bottom: 24px;
 }
 @media (max-width: 900px){
   .cards{ grid-template-columns: 1fr; }
@@ -192,7 +228,7 @@ main.container > .mt{ margin-top: 34px; }
   border-radius: var(--radius);
   overflow: hidden;
   text-decoration: none;
-  color: inherit;
+  color: var(--brand);
   transition: .15s transform ease, .15s box-shadow ease;
 }
 .card:hover{
@@ -211,3 +247,83 @@ main.container > .mt{ margin-top: 34px; }
 .card-body{ padding: 12px 14px; }
 .card-body h3{ margin: .2rem 0 .3rem; font-size: 1.05rem; }
 .card-body p{ margin: 0; color: var(--muted); }
+
+
+:root{
+  /* 你的壁纸路径：相对网站根目录或相对 CSS 文件 */
+  --wallpaper-url: url("../images/wallpaper.jpg");
+  /* 壁纸暗度（0=不暗，1=全黑），推荐 0.25~0.5 之间便于阅读 */
+  --wallpaper-dim: 0.28;
+}
+
+body::before{
+  content: "";
+  position: fixed;       /* 覆盖整个视口，随滚动保持静止 */
+  inset: 0;
+  z-index: -1;           /* 放在所有内容后面 */
+  background-image: var(--wallpaper-url);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;   /* 视差感（移动端有时会被忽略） */
+  transform: translateZ(0);       /* 某些浏览器提升性能 */
+}
+
+/* 叠一层暗色遮罩，保证文字可读性 */
+body::after{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0,0,0,var(--wallpaper-dim));
+  pointer-events: none;
+}
+
+/* 顶部/底部略透明，让壁纸隐约透出（你有 soft-header/soft-footer 就会很好看） */
+.site-header,
+.soft-header{
+  background: rgba(255,255,255,0.78);
+  backdrop-filter: saturate(1.05) blur(4px);
+}
+
+.site-footer,
+.soft-footer{
+  background: rgba(255,255,255,0.78);
+  backdrop-filter: saturate(1.05) blur(4px);
+}
+
+/* 如果你用的 soft 背景（body.soft-bg）会把灰底盖住；将其调成透明即可 */
+body.soft-bg{ background: transparent; }
+
+/* 仅主页（body.soft-bg）卡片半透明 */
+body.soft-bg .card{
+  background: rgba(255,255,255,0.4);           /* 半透明白 */
+  border-color: rgba(0,0,0,0.08);
+  backdrop-filter: saturate(1.05) blur(4px);    /* 轻磨砂 */
+}
+
+/* 悬停时稍微“更实一点” */
+body.soft-bg .card:hover{
+  background: rgba(255,255,255,0.6);
+}
+
+/* 文案可读性（保持深色） */
+body.soft-bg .card,
+body.soft-bg .card h3,
+body.soft-bg .card p{
+  color: var(--brand);
+}
+
+/* 首页左上角个人卡片也用半透明白 + 磨砂 */
+body.soft-bg .profile.small{
+  background: rgba(255,255,255,0.4);
+  border-color: rgba(0,0,0,0.08);
+  backdrop-filter: saturate(1.05) blur(4px);
+  color: var(--brand);
+}
+body.soft-bg .profile.small h2,
+body.soft-bg .profile.small p,
+body.soft-bg .profile.small .muted,
+body.soft-bg .profile.small a{
+  color: var(--brand);
+}
