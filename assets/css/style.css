@@ -173,7 +173,7 @@ body.soft-bg{ background: var(--bg-soft); }
   height:clamp(500px, 30vh, 600px);
   object-fit:cover;
   display:none;                 /* 默认都隐藏 */
-  background:#d7d7d7;
+  background: rgba(255,255,255,0.36); 
   border-radius:14px;
 }
 

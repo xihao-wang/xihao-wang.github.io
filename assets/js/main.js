@@ -10,13 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 播放列表：type= 'video' 或 'image'
   const playlist = [
-    { type: 'video', src: 'assets/videos/cloud1.mp4', rate: 1.25, poster: 'assets/images/show1.jpg' },
-    { type: 'video', src: 'assets/videos/cloud2.mp4', rate: 1.25, poster: 'assets/images/show2.jpg' },
-    { type: 'image', src: 'assets/images/p2.png', duration: 3000 },
-    { type: 'image', src: 'assets/images/p3.png', duration: 3000 },
-    { type: 'image', src: 'assets/images/p0.png', duration: 3000 },
-    { type: 'image', src: 'assets/images/p1.png', duration: 3000 },
-    { type: 'video', src: 'assets/videos/show3.mp4', rate: 1.25 }
+    { type: 'video', src: 'assets/videos/cloud1.mp4', rate: 2.0, poster: 'assets/images/show1.jpg' },
+    { type: 'video', src: 'assets/videos/cloud2.mp4', rate: 1.5, poster: 'assets/images/show2.jpg' },
+    { type: 'image', src: 'assets/images/p2.png', duration: 2500 },
+    { type: 'image', src: 'assets/images/p3.png', duration: 2500 },
+    { type: 'image', src: 'assets/images/p0.png', duration: 2500 },
+    { type: 'image', src: 'assets/images/p1.png', duration: 2500 },
+    { type: 'video', src: 'assets/videos/show3.mp4', rate: 1.75 }
   ];
 
   let idx = 0;
