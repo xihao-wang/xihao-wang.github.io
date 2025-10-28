@@ -1,90 +1,107 @@
-/* ===== 背景改为柔和灰色，头部/底部同色 ===== */
+/* === 基础变量与通用重置（补缺） === */
 :root{
-  --bg-soft: #e6e6e6; /* 近似示例图的浅灰 */
-}
-body.soft-bg{ background: var(--bg-soft); }
-.soft-header{ background: var(--bg-soft); border-bottom: 0; }
-.soft-footer{ background: var(--bg-soft); border-top: 0; }
-
-/* ===== HERO：左文案 + 右大图，左侧包含“个人卡片”在上方 ===== */
-.hero{
-  display:grid;
-  grid-template-columns: 1.05fr 1fr; /* 左略宽，右图 */
-  gap:32px;
-  align-items:center;
-  padding: 32px 0 14px;
+  --bg:#ffffff;
+  --text:#1a1a1a;
+  --muted:#6b7280;
+  --brand:#0f172a;
+  --link:#2563eb;
+  --card:#f5f7fb;
+  --border:#e5e7eb;
+  --radius:14px;
 }
 
-.hero-title{
-  font-size: clamp(2.4rem, 3.8vw, 3.4rem);
-  line-height:1.08;
-  margin: 10px 0 10px;
-  letter-spacing:.2px;
-}
-.hero-lead{ font-size:1.06rem; margin: 0 0 12px; }
-
-/* 右侧大图容器 */
-.hero-right{
-  margin:0;
-  border-radius: 14px;
-  overflow:hidden;
-  box-shadow: 0 14px 36px rgba(0,0,0,.10);
-}
-.hero-right img{
-  width:100%;
-  height: clamp(340px, 56vh, 600px);
-  object-fit: cover;
-  display:block;
-  background:#d7d7d7;
-  border-radius:14px;
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
 }
 
-/* 个人卡片的“紧凑版”放在文案上方 */
-.profile.small{
+/* === 容器（补缺） === */
+.container{ max-width:1100px; margin:0 auto; padding:0 18px; }
+
+/* === 顶部导航布局（补缺；与你已有 .soft-header 不冲突） === */
+.site-header{
+  border-bottom:1px solid var(--border);
   background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:14px;
-  width:min(420px, 100%);
-  margin: 0 0 12px;  /* 与标题拉开一点 */
-  box-shadow: 0 8px 22px rgba(0,0,0,.06);
+  position:sticky; top:0; z-index:10;
 }
-.profile.small .avatar{ width:88px; height:88px; }
-.profile.small h2{ margin:.5rem 0 .2rem; }
+.site-header .nav{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+.brand{ font-weight:700; color:var(--brand); text-decoration:none; }
 
-/* 行为区域 */
-.cta{ margin-top: 6px; }
-
-/* Featured Projects 与上方留白 */
-main.container > .mt{ margin-top: 34px; }
-
-/* 响应式：小屏上下排列 */
-@media (max-width: 960px){
-  .hero{ grid-template-columns: 1fr; gap:18px; }
-  .hero-right img{ height: clamp(240px, 44vh, 480px); }
-}
-
-/* --- cards grid: 确保卡片样式存在 --- */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-  margin-top:10px;
-}
-@media (max-width:900px){ .cards{ grid-template-columns:1fr; } }
-
-.card{
-  display:block;
-  background:#fff;
-  border:1px solid #e5e7eb; /* 等价 var(--border) */
-  border-radius:14px;
-  overflow:hidden;
+/* 右侧链接行（补缺） */
+.site-header nav a{
+  color:var(--text);
   text-decoration:none;
-  color:inherit;
-  transition:.15s transform ease,.15s box-shadow ease;
+  margin-left:18px;
+  padding:6px 10px;
+  border-radius:8px;
 }
-.card:hover{ transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,.07); }
-.card img{ display:block; width:100%; height:150px; object-fit:cover; background:#ddd; }
-.card-body{ padding:12px 14px; }
-.card-body h3{ margin:.2rem 0 .3rem; font-size:1.05rem; }
-.card-body p{ margin:0; color:#6b7280; }
+.site-header nav a:hover,
+.site-header nav a.active{ background:var(--card); }
+
+/* === 标题/间距（补缺） === */
+h1{ font-size:2rem; margin:.2rem 0 1rem; }
+h2{ margin:1.6rem 0 .6rem; }
+.mt{ margin-top:1.6rem; }
+
+/* === 个人卡片的通用样式（供 .profile.small 复用，补缺） === */
+.profile{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:16px;
+  border-radius:var(--radius);
+  height:fit-content;
+}
+.avatar{
+  width:96px; height:96px; border-radius:50%;
+  object-fit:cover; border:2px solid #fff;
+  box-shadow:0 1px 6px rgba(0,0,0,.06);
+}
+.muted{ color:var(--muted); margin:.2rem 0; }
+.links a{
+  display:inline-block; margin-right:10px;
+  color:var(--link); text-decoration:none;
+}
+.links a:hover{ text-decoration:underline; }
+
+/* === 按钮（About / See portfolio 需要，补缺） === */
+.btn{
+  display:inline-block;
+  background:var(--link);
+  color:#fff;
+  text-decoration:none;
+  padding:10px 16px;
+  border-radius:10px;
+  margin-right:10px;
+  border:1px solid transparent;
+  font-weight:600;
+  transition:.15s transform ease, .15s box-shadow ease, opacity .15s ease;
+}
+.btn:hover{ opacity:.92; transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.12); }
+.btn.btn-outline{
+  background:#fff;
+  color:var(--link);
+  border:1px solid var(--link);
+}
+
+/* === 项目分节（若内页使用，补缺） === */
+.project{
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:24px;
+  border-top:1px solid var(--border);
+  padding:24px 0;
+}
+.project:first-of-type{ border-top:0; }
+@media (max-width:900px){ .project{ grid-template-columns:1fr; } }
+.project-media img{
+  width:100%; height:240px; object-fit:cover;
+  border-radius:12px; background:#ddd;
+}
+.project .btn{ margin-top:8px; }
+
+/* === 页脚（补缺；与你的 .soft-footer 不冲突） === */
+.site-footer{ border-top:1px solid var(--border); margin-top:40px; }
+.site-footer .container{ padding:16px 18px; color:var(--muted); font-size:.95rem; }
