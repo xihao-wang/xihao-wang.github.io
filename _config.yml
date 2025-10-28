@@ -165,7 +165,7 @@ footer:
 # Reading Files
 include:
   - .htaccess
-  - docs/_pages
+  - _pages
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
