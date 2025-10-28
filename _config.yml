@@ -114,7 +114,7 @@ analytics:
 # Site Author
 author:
   name             : "Xihao Wang"
-  avatar           : "/assets/avatar2.png"
+  avatar           : "/assets/avatar.png"
   bio              : "M2 IMAGINE · Graphics 2D-3D /Engine Dev · OpenGL/GLSL"
   location         : "Montpellier, France"
   email            : "xihao.wang201908@gmail.com"
