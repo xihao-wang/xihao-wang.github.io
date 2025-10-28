@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Xihao Wang — Graphics & Game Dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="M2 IMAGINE | C++ · OpenGL/GLSL · PBR · Volumetrics">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">Xihao Wang - Graphics & Game Dev</a>
+      <nav>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="assets/resume/CV.pdf" target="_blank" rel="noopener">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container grid">
+    <!-- 左侧个人卡片 -->
+    <aside class="profile">
+      <img class="avatar" src="assets/images/avatar.jpg" alt="Avatar of Xihao Wang">
+      <h2>Xihao Wang</h2>
+      <p class="muted">M2 IMAGINE · Graphics 2D/3D / Engine Dev · OpenGL/GLSL</p>
+      <p class="muted">📍 Montpellier, France</p>
+      <div class="links">
+        <a href="mailto:xihao.wang201908@gmail.com">Email</a>
+        <a href="https://github.com/xihao-wang" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+      </div>
+    </aside>
+
+    <!-- 右侧内容 -->
+    <section>
+      <h1>Welcome</h1>
+      <p>Hi, I'm Xihao — I build rendering tech and game engine features (C++ / OpenGL / GLSL): PBR & IBL, volumetric effects (ray marching), and engine tools.</p>
+
+      <div class="cta">
+        <a class="btn" href="about.html">About me</a>
+        <a class="btn btn-outline" href="portfolio.html">See portfolio</a>
+      </div>
+
+      <h2 class="mt">Featured Projects</h2>
+      <div class="cards">
+        <a class="card" href="portfolio.html#pbr-ibl">
+          <img src="assets/images/pbr.jpg" alt="">
+          <div class="card-body">
+            <h3>PBR with IBL</h3>
+            <p>Cook-Torrance, GGX, prefiltered env, irradiance map (OpenGL/GLSL).</p>
+          </div>
+        </a>
+        <a class="card" href="portfolio.html#volumetric-clouds">
+          <img src="assets/images/clouds.jpg" alt="">
+          <div class="card-body">
+            <h3>Volumetric Clouds</h3>
+            <p>Ray marching with 3D noise, lighting & phase functions.</p>
+          </div>
+        </a>
+        <a class="card" href="portfolio.html#raytracer">
+          <img src="assets/images/raytracer.jpg" alt="">
+          <div class="card-body">
+            <h3>Ray Tracer</h3>
+            <p>Reflection, refraction, transparency with Kd-Tree acceleration.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      © <span id="year"></span> Xihao Wang. Built with plain HTML/CSS.
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
