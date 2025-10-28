@@ -105,3 +105,71 @@ h2{ margin:1.6rem 0 .6rem; }
 /* === 页脚（补缺；与你的 .soft-footer 不冲突） === */
 .site-footer{ border-top:1px solid var(--border); margin-top:40px; }
 .site-footer .container{ padding:16px 18px; color:var(--muted); font-size:.95rem; }
+
+
+/* === soft 主题（index 用到） === */
+:root{
+  --bg-soft: #e6e6e6;
+}
+body.soft-bg{ background: var(--bg-soft); }
+.soft-header{ background: var(--bg-soft); border-bottom: 0; }
+.soft-footer{ background: var(--bg-soft); border-top: 0; }
+
+/* === HERO：左文案 + 右大图，两列 === */
+.hero{
+  display: grid;
+  grid-template-columns: 1.05fr 1fr; /* 左略宽，右图 */
+  gap: 32px;
+  align-items: center;
+  padding: 32px 0 14px;
+}
+
+/* 左侧标题与引导语 */
+.hero-title{
+  font-size: clamp(2.4rem, 3.8vw, 3.4rem);
+  line-height: 1.08;
+  margin: 10px 0 10px;
+  letter-spacing: .2px;
+}
+.hero-lead{ font-size: 1.06rem; margin: 0 0 12px; }
+
+/* 右侧展示图 */
+.hero-right{
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(0,0,0,.10);
+}
+.hero-right img{
+  width: 100%;
+  height: clamp(340px, 56vh, 600px);
+  object-fit: cover;
+  display: block;
+  background: #d7d7d7;
+  border-radius: 14px;
+}
+
+/* 个人卡片的紧凑版（叠在 hero 左侧上方） */
+.profile.small{
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  width: min(420px, 100%);
+  margin: 0 0 12px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.06);
+}
+.profile.small .avatar{ width: 88px; height: 88px; }
+.profile.small h2{ margin: .5rem 0 .2rem; }
+
+/* 行动按钮与间距 */
+.cta{ margin-top: 6px; }
+
+/* Featured Projects 与上方留白 */
+main.container > .mt{ margin-top: 34px; }
+
+/* 响应式：小屏上下排列 */
+@media (max-width: 960px){
+  .hero{ grid-template-columns: 1fr; gap: 18px; }
+  .hero-right img{ height: clamp(240px, 44vh, 480px); }
+}
