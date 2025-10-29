@@ -4,7 +4,7 @@
   --text:#ffffff;
   --muted:#6b7280;
   --brand:#0f172a;
-  --link:#2563eb;
+  --link:#0a3f00;
   --card:#f5f7fb;
   --border:#e5e7eb;
   --radius:14px;
@@ -188,6 +188,16 @@ body.soft-bg{ background: var(--bg-soft); }
 /* 播放中的元素显示 */
 .hero-right .is-active{ display:block; }
 
+.hero-caption{
+  margin: 8px 10px 10px;                 /* 与容器边缘留白 */
+  font-size: 1.25rem;
+  text-align: center;
+  line-height: 1.4;
+  color: #ffffff;                        /* 深色文字 */
+  background: transparent;    /* 半透明白底 */
+  border-radius: 10px;
+}
+
 /* 个人卡片的紧凑版（叠在 hero 左侧上方） */
 .profile.small{
   background: #fff;
@@ -209,6 +219,57 @@ main.container > .mt{ margin-top: 34px; }
 
 main.container{
   padding-bottom: 48px;     /* 调整数值就能改留白大小 */
+}
+
+.project.expandable {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-body {
+  position: relative;
+}
+
+/* 下箭头按钮 */
+.toggle-btn {
+  display: inline-block;
+  margin-top: 6px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: transform 0.2s ease;
+}
+
+.toggle-btn:hover {
+  transform: scale(1.15);
+}
+
+/* 展开详情部分：默认隐藏 */
+.details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.details video {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* 展开状态 */
+.project.expandable.open .details {
+  max-height: 1000px; /* 够大即可 */
+  opacity: 1;
+  margin-top: 8px;
+}
+
+.project.expandable.open .toggle-btn {
+  transform: rotate(180deg);
 }
 
 /* 响应式：小屏上下排列 */

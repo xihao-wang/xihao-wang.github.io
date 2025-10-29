@@ -2,21 +2,27 @@ document.getElementById('year')?.appendChild(document.createTextNode(new Date().
 
 const DEFAULT_RATE = 2;
 
+
 // === Hero 视频轮播（show1 -> show2 -> … 循环） ===
 document.addEventListener("DOMContentLoaded", () => {
   const video = document.getElementById("heroVideo");
   const image = document.getElementById("heroImage");
+  const captionEl = document.getElementById("heroCaption");
+
   if (!video || !image) return;
 
   // 播放列表：type= 'video' 或 'image'
   const playlist = [
-    { type: 'video', src: 'assets/videos/cloud1.mp4', rate: 2.0, poster: 'assets/images/show1.jpg' },
-    { type: 'video', src: 'assets/videos/cloud2.mp4', rate: 1.5, poster: 'assets/images/show2.jpg' },
-    { type: 'image', src: 'assets/images/p2.png', duration: 2500 },
-    { type: 'image', src: 'assets/images/p3.png', duration: 2500 },
-    { type: 'image', src: 'assets/images/p0.png', duration: 2500 },
-    { type: 'image', src: 'assets/images/p1.png', duration: 2500 },
-    { type: 'video', src: 'assets/videos/show3.mp4', rate: 1.75 }
+    { type: 'video', src: 'assets/videos/cloud1.mp4', rate: 2.0, poster: 'assets/images/show1.jpg' ,caption: 'Volumetric clouds'},
+    { type: 'video', src: 'assets/videos/cloud2.mp4', rate: 1.5, poster: 'assets/images/show2.jpg',caption: 'Volumetric clouds' },
+    { type: 'image', src: 'assets/images/p2.png', duration: 2500 ,caption: 'Photo Mosaic'},
+    { type: 'image', src: 'assets/images/p3.png', duration: 2500 ,caption: 'Photo Mosaic'},
+    { type: 'image', src: 'assets/images/p0.png', duration: 2500 ,caption: 'Photo Mosaic'},
+    { type: 'image', src: 'assets/images/p1.png', duration: 2500 ,caption: 'Photo Mosaic'},
+    { type: 'video', src: 'assets/videos/show3.mp4', rate: 1.75 ,caption: 'Game Engine : ★Star engine★'},
+    { type: 'image', src: 'assets/images/r0.png', duration: 2500 ,caption: 'Ray tracing : Cornell Box'},
+    { type: 'image', src: 'assets/images/r1.png', duration: 2500 ,caption: 'Ray tracing : Cornell Box'},
+    { type: 'image', src: 'assets/images/r2.png', duration: 2500 ,caption: 'Ray tracing : World'}
   ];
 
   let idx = 0;
@@ -57,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const p = video.play();
       if (p && typeof p.catch === 'function') p.catch(() => {});
     }
+    if (captionEl) captionEl.textContent = item.caption || '';
   }
 
   // 视频结束后播下一个
@@ -99,4 +106,18 @@ document.addEventListener("DOMContentLoaded", () => {
   video.muted = true;
   video.setAttribute('playsinline', '');
   playAt(idx);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const expandableSections = document.querySelectorAll('.project.expandable');
+
+  expandableSections.forEach(section => {
+    const btn = section.querySelector('.toggle-btn');
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+      const isOpen = section.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+    });
+  });
 });

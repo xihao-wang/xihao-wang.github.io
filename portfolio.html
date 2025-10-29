@@ -21,39 +21,115 @@
   <main class="container">
     <h1>Portfolio</h1>
 
-    <section id="pbr-ibl" class="project">
+    <section id="pbr-ibl" class="project expandable">
       <div class="project-media">
-        <img src="assets/images/pbr.jpg" alt="">
+        <img src="assets/images/game.png" alt="">
       </div>
       <div class="project-body">
         <h2>PBR with IBL</h2>
         <p>Cook-Torrance BRDF (GGX), Schlick Fresnel, prefiltered environment map and irradiance convolution; material workflow (metalness-roughness).</p>
         <p><strong>Tech:</strong> C++, OpenGL, GLSL, cubemaps, framebuffers</p>
-        <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+          <!-- ↓ 折叠内容 -->
+        <div class="details">
+          <video src="assets/videos/cloud1.mp4" controls></video>
+          <p>Supports batch processing of multiple targets, average/histogram/distribution algorithms, and optimized nearest matching.</p>
+          <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
+        </div>
       </div>
     </section>
 
-    <section id="volumetric-clouds" class="project">
+    <section id="volumetric-clouds" class="project expandable">
       <div class="project-media">
-        <img src="assets/images/clouds.jpg" alt="">
+        <img src="assets/images/cloud.png" alt="">
       </div>
       <div class="project-body">
         <h2>Volumetric Clouds</h2>
         <p>Ray marching with 3D noise; lighting model with phase functions; step size / performance tuning and temporal stability.</p>
         <p><strong>Tech:</strong> GLSL, 3D textures, ray marching</p>
-        <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code / Notes</a></p>
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+          <!-- ↓ 折叠内容 -->
+        <div class="details">
+          <video src="assets/videos/cloud1.mp4" controls></video>
+          <p>Supports batch processing of multiple targets, average/histogram/distribution algorithms, and optimized nearest matching.</p>
+          <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
+        </div>
       </div>
     </section>
 
-    <section id="raytracer" class="project">
+    <section id="raytracer" class="project expandable">
       <div class="project-media">
-        <img src="assets/images/raytracer.jpg" alt="">
+        <img src="assets/images/raytracer.png" alt="">
       </div>
       <div class="project-body">
         <h2>Ray Tracer</h2>
         <p>Recursive reflection & refraction, transparent and rough materials; Kd-Tree acceleration.</p>
         <p><strong>Tech:</strong> C++, BVH/Kd-Tree</p>
-        <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+          <!-- ↓ 折叠内容 -->
+        <div class="details">
+          <video src="assets/videos/cloud1.mp4" controls></video>
+          <p>Supports batch processing of multiple targets, average/histogram/distribution algorithms, and optimized nearest matching.</p>
+          <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="mosaic" class="project expandable">
+      <div class="project-media">
+        <img src="assets/images/p1.png" alt="">
+      </div>
+      <div class="project-body">
+        <h2>Photo Mosaic</h2>
+        <p>Generates photo mosaics using multiple matching strategies: average color, histogram similarity, and distribution-based matching. Supports batch processing of multiple targets.</p>
+        <p><strong>Tech:</strong> C++/Python, image processing, KD/nearest matching, batching</p>
+        
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+          <!-- ↓ 折叠内容 -->
+        <div class="details">
+          <video src="assets/videos/cloud1.mp4" controls></video>
+          <p>Supports batch processing of multiple targets, average/histogram/distribution algorithms, and optimized nearest matching.</p>
+          <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Game of AI (Godot) -->
+    <section id="ai-godot" class="project expandable">
+      <div class="project-media">
+        <img src="assets/images/dos.png" alt="">
+      </div>
+      <div class="project-body">
+        <h2>Game of AI (Godot)</h2>
+        <p>AI-driven gameplay with multiple strategies (e.g., greedy, heuristic, minimax-lite/rollouts). Compares agents under identical scenarios and visualizes outcomes.</p>
+        <p><strong>Tech:</strong> Godot (GDScript), state evaluation, heuristics, simulation loop</p>
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+          <!-- ↓ 折叠内容 -->
+        <div class="details">
+          <video src="assets/videos/cloud1.mp4" controls></video>
+          <p>Supports batch processing of multiple targets, average/histogram/distribution algorithms, and optimized nearest matching.</p>
+          <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Serious Game (Programming Puzzle) -->
+    <section id="serious-godot" class="project expandable">
+      <div class="project-media">
+        <img src="assets/images/serieux.png" alt="">
+      </div>
+      <div class="project-body">
+        <h2>Serious Game — Programming Puzzle (Godot)</h2>
+        <p>A “learning-by-doing” programming puzzle game. Players solve logic/sequence problems to progress; designed for teaching fundamental programming concepts in an accessible way.</p>
+        <p><strong>Tech:</strong> Godot (GDScript), level scripting, UI/UX for pedagogy</p>
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+          <!-- ↓ 折叠内容 -->
+        <div class="details">
+          <video src="assets/videos/cloud1.mp4" controls></video>
+          <p>Supports batch processing of multiple targets, average/histogram/distribution algorithms, and optimized nearest matching.</p>
+          <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
+        </div>
       </div>
     </section>
   </main>
