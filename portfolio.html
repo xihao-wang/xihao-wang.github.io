@@ -26,14 +26,35 @@
         <img src="assets/images/game.png" alt="">
       </div>
       <div class="project-body">
-        <h2>PBR with IBL</h2>
-        <p>Cook-Torrance BRDF (GGX), Schlick Fresnel, prefiltered environment map and irradiance convolution; material workflow (metalness-roughness).</p>
-        <p><strong>Tech:</strong> C++, OpenGL, GLSL, cubemaps, framebuffers</p>
+        <h2>Star Engine — PBR & Engine Tools</h2>
+        <p>
+          Developed as part of the <strong>NITNINDO</strong> team project, <em>Star Engine</em> is a modular and optimized 3D game engine built in C++ and OpenGL.
+          It integrates a complete <strong>Physically Based Rendering (PBR)</strong> system with environment cubemaps, light probes, and material workflow 
+          supporting albedo, normal, roughness, metalness, and AO maps.
+        </p>
+        <p>
+          The engine also includes scene editing tools, an in-engine photo capture system, octahedral shadow mapping, skeletal animation
+          (keyframe interpolation, skinning via vertex shader), and a rigid-body physics module with collision layers and masks.
+        </p>
+        <p><strong>Tech:</strong> C++, OpenGL, GLSL, Assimp, ECS, PBR/IBL, Animation, Physics</p>
         <button class="toggle-btn" aria-expanded="false">▼</button>
           <!-- ↓ 折叠内容 -->
         <div class="details">
-          <video src="assets/videos/cloud1.mp4" controls></video>
-          <p>Supports batch processing of multiple targets, average/histogram/distribution algorithms, and optimized nearest matching.</p>
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/D3xgDrWgewE?rel=0&modestbranding=1&playsinline=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+              loading="lazy">
+            </iframe>
+          </div>
+          <p>
+            <em>Star Engine</em> demonstrates a flexible entity-component architecture, real-time lighting with physically-accurate shading, 
+            octahedral shadow projection, GPU-based skinning, and an integrated editor for material and scene manipulation.
+          </p>
           <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
         </div>
       </div>
