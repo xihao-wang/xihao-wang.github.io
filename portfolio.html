@@ -21,6 +21,58 @@
   <main class="container">
     <h1>Portfolio</h1>
 
+    <section id="volumetric-clouds" class="project expandable">
+      <div class="project-media">
+        <img src="assets/images/cloud.png" alt="">
+      </div>
+      <div class="project-body">
+        <h2>Volumetric Clouds</h2>
+        <p>
+          We implement volumetric clouds with ray marching and physically-based lighting
+          (Beer–Lambert extinction, in-/out-scattering, Henyey–Greenstein phase). Generation
+          explores three pistes: a sphere-based procedural shape (Perlin/FBM + domain warping + remap curve),
+          a 3D noise texture pipeline, and a particle approach.
+        </p>
+        <p><strong>Tech:</strong> GLSL, 3D textures, ray marching, Beer–Lambert, Henyey–Greenstein, (optional) GPU particles</p>
+    
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+        <!-- ↓ 折叠内容 -->
+        <div class="details">
+    
+          <!-- Piste 1: Sphere -->
+          <h3>Sphere-based Shape</h3>
+          <p>
+            Start from a base sphere and inject noise: Perlin → FBM (multi-octave) → domain warping,
+            then remap with an R-curve to sculpt the final density field. This yields controllable macro-shape
+            with rich detail.
+          </p>
+          <img src="assets/videos/move.gif" alt="demo gif" class="gif-media" loading="lazy" decoding="async">
+          <p>
+            Lighting is computed by single scattering with Beer–Lambert transmittance and a Henyey–Greenstein phase function, producing soft shadows and view-dependent highlights around the light direction.
+          </p>
+          <video src="assets/videos/powder.mp4" controls></video>
+    
+          <!-- Piste 2: Texture 3D -->
+          <h3>Texture 3D</h3>
+          <p>
+            Precompute a 3D noise texture (Perlin + FBM, optionally warped) and sample it along the march
+            to drive density—simple, fast, and stable; easy to tune by frequency/amplitude per octave. 
+          </p>
+          <video src="assets/videos/texture3d.mp4" controls></video>
+    
+          <!-- Piste 3: Particle -->
+          <h3>Particle</h3>
+          <p>
+            A particle cloud (impostors/voxels) updated on GPU; good for dynamic behaviors but heavier for
+            shadows and bandwidth, so we keep it as an experimental path. 
+          </p>
+          <video src="assets/videos/particles.mp4" controls></video>
+          <p><a class="btn" href="assets/doc/Rapport_TER (4).pdf" target="_blank">view the doc.</a></p>
+          
+        </div>
+      </div>
+    </section>
+
     <section id="pbr-ibl" class="project expandable">
       <div class="project-media">
         <img src="assets/images/game.png" alt="">
@@ -55,44 +107,24 @@
             <em>Star Engine</em> demonstrates a flexible entity-component architecture, real-time lighting with physically-accurate shading, 
             octahedral shadow projection, GPU-based skinning, and an integrated editor for material and scene manipulation.
           </p>
-          <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
+          <p><a class="btn" href="assets/doc/Oral moteur de jeu (1).pdf" target="_blank">view the doc.</a></p>
+
         </div>
       </div>
     </section>
 
-    <section id="volumetric-clouds" class="project expandable">
-      <div class="project-media">
-        <img src="assets/images/cloud.png" alt="">
-      </div>
-      <div class="project-body">
-        <h2>Volumetric Clouds</h2>
-        <p>Ray marching with 3D noise; lighting model with phase functions; step size / performance tuning and temporal stability.</p>
-        <p><strong>Tech:</strong> GLSL, 3D textures, ray marching</p>
-        <button class="toggle-btn" aria-expanded="false">▼</button>
-          <!-- ↓ 折叠内容 -->
-        <div class="details">
-          <video src="assets/videos/cloud1.mp4" controls></video>
-          <p>Supports batch processing of multiple targets, average/histogram/distribution algorithms, and optimized nearest matching.</p>
-          <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
-        </div>
-      </div>
-    </section>
+
 
     <section id="raytracer" class="project expandable">
       <div class="project-media">
         <img src="assets/images/raytracer.png" alt="">
       </div>
       <div class="project-body">
-        <h2>Ray Tracer</h2>
+        <h2>Ray Tracer in CPU</h2>
         <p>Recursive reflection & refraction, transparent and rough materials; Kd-Tree acceleration.</p>
-        <p><strong>Tech:</strong> C++, BVH/Kd-Tree</p>
-        <button class="toggle-btn" aria-expanded="false">▼</button>
-          <!-- ↓ 折叠内容 -->
-        <div class="details">
-          <video src="assets/videos/cloud1.mp4" controls></video>
-          <p>Supports batch processing of multiple targets, average/histogram/distribution algorithms, and optimized nearest matching.</p>
-          <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
-        </div>
+        <p><strong>Tech:</strong> C++, OpenGL, BVH/Kd-Tree</p>
+        <p><a class="btn" href="assets/doc/HAI719I_TP_RayTracing_2 (1).pdf" target="_blank">view the doc.</a></p>
+        
       </div>
     </section>
 
@@ -108,32 +140,25 @@
         <button class="toggle-btn" aria-expanded="false">▼</button>
           <!-- ↓ 折叠内容 -->
         <div class="details">
-          <video src="assets/videos/cloud1.mp4" controls></video>
-          <p>Supports batch processing of multiple targets, average/histogram/distribution algorithms, and optimized nearest matching.</p>
-          <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/txLISvYjGjA?rel=0&modestbranding=1&playsinline=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+              loading="lazy">
+            </iframe>
+          </div>
+          <p><a class="btn" href="assets/doc/Projet de photo-mosaïque avec critères avancés (1).pdf" target="_blank">view the doc.</a></p>
+
         </div>
       </div>
 
     </section>
 
-    <!-- Game of AI (Godot) -->
-    <section id="ai-godot" class="project expandable">
-      <div class="project-media">
-        <img src="assets/images/dos.png" alt="">
-      </div>
-      <div class="project-body">
-        <h2>Game of AI (Godot)</h2>
-        <p>AI-driven gameplay with multiple strategies (e.g., greedy, heuristic, minimax-lite/rollouts). Compares agents under identical scenarios and visualizes outcomes.</p>
-        <p><strong>Tech:</strong> Godot (GDScript), state evaluation, heuristics, simulation loop</p>
-        <button class="toggle-btn" aria-expanded="false">▼</button>
-          <!-- ↓ 折叠内容 -->
-        <div class="details">
-          <video src="assets/videos/cloud1.mp4" controls></video>
-          <p>Supports batch processing of multiple targets, average/histogram/distribution algorithms, and optimized nearest matching.</p>
-          <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
-        </div>
-      </div>
-    </section>
+    
 
     <!-- Serious Game (Programming Puzzle) -->
     <section id="serious-godot" class="project expandable">
@@ -141,19 +166,112 @@
         <img src="assets/images/serieux.png" alt="">
       </div>
       <div class="project-body">
-        <h2>Serious Game — Programming Puzzle (Godot)</h2>
-        <p>A “learning-by-doing” programming puzzle game. Players solve logic/sequence problems to progress; designed for teaching fundamental programming concepts in an accessible way.</p>
-        <p><strong>Tech:</strong> Godot (GDScript), level scripting, UI/UX for pedagogy</p>
+        <h2>Serious Game — Ebucliper (Godot)</h2>
+        <p>
+          <em>Ebucliper</em> is a serious game designed to teach the fundamentals of programming — 
+          instructions, loops, and functions — through hands-on construction puzzles.
+          The player programs a robot named <strong>Blocky 2000</strong> to rebuild the University of Montpellier campus.
+        </p>
+        <p><strong>Tech:</strong> Godot (GDScript), 3D grid logic, Tween animation, data persistence, UI/UX design</p>
+
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+        <!-- ↓ 折叠内容 -->
+        <div class="details">
+          <h3>Gameplay</h3>
+          <p>
+            Players combine instruction blocks — move, rotate, place — to guide Blocky in building target structures
+            within a voxel grid. Success is rewarded with stars based on efficiency and correctness.
+          </p>
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/OxcghjVXqGs?rel=0&modestbranding=1&playsinline=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+              loading="lazy">
+            </iframe>
+          </div>
+
+          <h3>Learning Design</h3>
+          <p>
+            Each level introduces new programming notions progressively. 
+            Players think, test, and iterate — mimicking the real coding process in an intuitive, visual way.
+          </p>
+          <p><a class="btn" href="https://crhonopose.itch.io/ebucilper" target="_blank">Play the game</a></p>
+          <p><a class="btn" href="assets/doc/GDD ebucliper.pdf" target="_blank">view the doc.</a></p>
+        </div>
+      </div>
+    </section>
+
+  <!-- Game of AI (Godot) -->
+    <section id="ai-godot" class="project expandable">
+      <div class="project-media">
+        <img src="assets/images/dos.png" alt="">
+      </div>
+      <div class="project-body">
+        <h2>Game of AI (Godot)</h2>
+        <p>A competitive simulation between intelligent agents.
+          The game features <strong>Starships</strong> (collectors) and a <strong>Guardian</strong> (defender),
+          each controlled by distinct AI strategies with tunable parameters.</p>
+        <p><strong>Tech:</strong> Godot (GDScript), state evaluation, heuristics, simulation loop</p>
         <button class="toggle-btn" aria-expanded="false">▼</button>
           <!-- ↓ 折叠内容 -->
         <div class="details">
-          <video src="assets/videos/cloud1.mp4" controls></video>
-          <p>Supports batch processing of multiple targets, average/histogram/distribution algorithms, and optimized nearest matching.</p>
-          <p><a class="btn" href="https://github.com/xihao-wang" target="_blank">Code</a></p>
+          <h3>Gameplay</h3>
+          <p>
+            Starships attempt to gather resources from the opposing zone and return safely,
+            while the Guardian patrols to intercept them. If caught outside the safe zone,
+            Starships lose all collected resources and respawn.
+          </p>
+
+          <h3>AI Strategies</h3>
+          <p>
+            Several strategies are implemented and compared:
+            random wandering, directed pursuit, radius-based detection,
+            and “teacher” (adaptive) agents that learn by observation.
+            Parameters such as speed, detection radius, and chase behavior influence success rates.
+          </p>
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/LBcVrEdwv5Q?rel=0&modestbranding=1&playsinline=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="denoising" class="project expandable">
+      <div class="project-media">
+        <img src="assets/images/denoising.png" alt="">
+      </div>
+      <div class="project-body">
+        <h2>Denoising Auto-Encoder with GAN</h2>
+        <p>
+          This project aims to remove noise from CIFAR-10 images using a deep learning pipeline that combines 
+          <strong>convolutional auto-encoders</strong> for feature extraction and a <strong>GAN</strong> architecture 
+          for visual quality enhancement.
+        </p>
+        <p><strong>Tech:</strong> Python, TensorFlow/Keras, CNN, Auto-Encoder, GAN, PSNR/SSIM evaluation</p>
+    
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+        <!-- ↓ 折叠内容 -->
+        <div class="details">
+          <h3>In progress ...</h3>
+    
+          <p><a class="btn" href="assets/doc/Projet Image - Débruitage.pdf" target="_blank">view the doc.</a></p>
         </div>
       </div>
     </section>
   </main>
+
 
   <footer class="site-footer">
     <div class="container">

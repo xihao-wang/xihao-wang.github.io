@@ -263,7 +263,7 @@ main.container{
 
 /* 展开状态 */
 .project.expandable.open .details {
-  max-height: 1000px; /* 够大即可 */
+  max-height: 9000px; /* 够大即可 */
   opacity: 1;
   margin-top: 8px;
 }
@@ -395,4 +395,37 @@ body.soft-bg .profile.small p,
 body.soft-bg .profile.small .muted,
 body.soft-bg .profile.small a{
   color: var(--brand);
+}
+
+.video-embed{
+  width: 100%;
+  max-width: 900px;      /* 想更大就调这个或删掉它 */
+  aspect-ratio: 16 / 9;  /* 保持 16:9 比例 */
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;      /* 载入前的黑底 */
+  margin-top: 10px;
+}
+
+.video-embed iframe,
+.details video{
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  border-radius: 12px;
+}
+
+/* 小屏时让播放器占满宽度 */
+@media (max-width: 960px){
+  .video-embed{ max-width: 100%; }
+}
+
+.details img.gif-media{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:10px;
+  margin-top:10px;
+  image-rendering:auto;
 }
