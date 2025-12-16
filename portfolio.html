@@ -129,9 +129,77 @@
         <button class="toggle-btn" aria-expanded="false">▼</button>
         <!-- ↓ 折叠内容 -->
         <div class="details">
-          <h3>In progress ...</h3>
-    
-          <p><a class="btn" href="https://github.com/VigKillian/denoiser_engine" target="_blank">Into Git</a></p>
+          <h3>Goal</h3>
+          <p>
+            Build a denoising engine that can restore <strong>noisy images</strong> under multiple noise types
+            (random / salt & pepper / Gaussian / dynamic range expansion noise) with a learning-based pipeline.
+            We focus on <strong>128x128</strong> images and evaluate quality using <strong>PSNR</strong> and visual comparisons.
+          </p>
+
+          <video src="assets/videos/denoise.mp4" controls>demonstration of our denoiser_engine</video>
+
+          <h3>Pipeline (VAE + U-Net + Paired-based GAN)</h3>
+          <ul>
+            <li>
+              <strong>VAE</strong>: learns a compact latent representation and reconstructs a clean image from a noisy input.
+            </li>
+            <li>
+              <strong>U-Net refinement</strong>: introduces skip connections to preserve spatial details and improve reconstruction sharpness.
+            </li>
+            <li>
+              <strong>Paired-based GAN</strong> (final stable version):
+              the discriminator receives pairs <code>(noisy, clean)</code> vs <code>(noisy, recon)</code>,
+              encouraging the model to learn the <em>noise residual</em> more directly, improving stability.
+            </li>
+          </ul>
+
+          <h3>Noise cases explored</h3>
+          <ul>
+            <li><strong>Classic noise</strong>: random / salt & pepper / Gaussian (weak & strong).</li>
+            <li><strong>Dynamic range expansion noise</strong>: produces distinctive histogram “spikes” compared to classic noise.</li>
+          </ul>
+
+          <h3>Results (PSNR highlights)</h3>
+          <p>
+            On <strong>128x128</strong> images, adding U-Net gives the largest boost, and the final paired-based GAN brings a small but
+            consistent improvement while remaining stable.
+          </p>
+          <ul>
+            <li><strong>Weak noise</strong> (128x128): VAE+U-Net ≈ <strong>33.93 dB</strong> → +GAN ≈ <strong>34.06 dB</strong></li>
+            <li><strong>Strong noise</strong> (128x128): VAE+U-Net ≈ <strong>26.04 dB</strong> → +GAN ≈ <strong>26.13 dB</strong></li>
+          </ul>
+
+          <h3>What we learned</h3>
+          <ul>
+            <li>
+              A “global GAN” over the whole image can be <strong>unstable</strong> (training collapse) and may limit improvements.
+            </li>
+            <li>
+              Changing the GAN/VAE rhythm and introducing GAN after VAE pretraining helps, but the most reliable approach
+              was the <strong>paired-based</strong> discriminator setup.
+            </li>
+            <li>
+              A practical next step is <strong>one model per noise type</strong>, plus a classifier to detect noise and route to the right denoiser.
+            </li>
+          </ul>
+          <p>This is our personalised introduction project video.</p>
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/watch?v=KJRPb2WWFjI"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="project-links">
+            <p>
+              <a class="btn" href="https://github.com/VigKillian/denoiser_engine" target="_blank" rel="noopener">GitHub Repo</a>
+              <a class="btn" href="assets/doc/Projet denoiser engine - soutenance finale.pdf" target="_blank" rel="noopener">Slides (PDF)</a>
+            </p>
+          </div>
         </div>
       </div>
     </section>
