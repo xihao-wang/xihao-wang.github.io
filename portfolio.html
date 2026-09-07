@@ -9,17 +9,66 @@
 <body>
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="/">Xihao Wang - Graphics & Game Dev</a>
+      <a class="brand" href="/">Xihao Wang</a>
       <nav>
         <a href="about.html">About</a>
         <a class="active" href="portfolio.html">Portfolio</a>
-        <a href="assets/resume/CV.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="https://github.com/xihao-wang" target="_blank" rel="noopener">GitHub</a>
+        <a href="assets/doc/CV-XihaoWang-en.pdf" target="_blank" rel="noopener">Resume</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
     <h1>Portfolio</h1>
+
+    <section id="fitac-mot" class="project expandable project-highlight">
+      <div class="project-media">
+        <img src="assets/images/fitac/result.png" alt="FiTAC-MOT tracking identities in a fisheye frame">
+      </div>
+      <div class="project-body">
+        <p class="project-kicker">Caplogy Innovation · Computer Vision Internship · 2026</p>
+        <h2>FiTAC-MOT — Fisheye Tracking under Appearance Changes</h2>
+        <p>
+          A multi-object tracking system for overhead fisheye video, designed to preserve pedestrian
+          identities through clothing, accessory, pose, scale, and viewpoint changes. The pipeline combines
+          gnomonic projection, YOLOv9e detections, OSNet/FastReID embeddings, short- and long-term memory,
+          learned temporal association, Hungarian matching, and AFLink.
+        </p>
+        <p><strong>Results:</strong> 61.423 HOTA and 55.837 IDF1 on held-out CapFiCA4 with AFLink;
+          46.573 HOTA and 56.747 IDF1 across six WEPDTOF scenes.</p>
+        <p><strong>Tech:</strong> Python, PyTorch, OpenCV, YOLOv9e, OSNet, FastReID, attention, TrackEval</p>
+        <div class="project-actions">
+          <a class="btn" href="https://github.com/xihao-wang/FiTAC-MOT" target="_blank" rel="noopener">Project Repository</a>
+          <a class="btn btn-outline" href="assets/doc/FiTAC-MOT-Internship-Report.pdf" target="_blank" rel="noopener">Internship Report</a>
+        </div>
+        <button class="toggle-btn" aria-expanded="false" aria-label="Show FiTAC-MOT details">▼</button>
+        <div class="details">
+          <h3>End-to-end pipeline</h3>
+          <img src="assets/images/fitac/pipeline.png" alt="Fisheye gnomonic projection detection and tracking pipeline" class="detail-media" loading="lazy">
+          <p>
+            Fisheye frames are projected into overlapping gnomonic views for person detection, then mapped
+            back to the original image. Affine correction creates cleaner ReID crops before online association.
+          </p>
+
+          <h3>Learned temporal association</h3>
+          <img src="assets/images/fitac/tracker-architecture.png" alt="OSNet and FastReID temporal tracking architecture" class="detail-media" loading="lazy">
+          <p>
+            I built the OSNet reference branch and a FastReID temporal branch with a 5-frame STM and
+            30-frame LTM. A TemporalAttentionScorer projects 2048-dimensional ReID features to 256 dimensions,
+            queries recent memory with the current detection, and learns a gated long-term context.
+          </p>
+
+          <h3>Dataset and evaluation</h3>
+          <img src="assets/images/fitac/appearance-change.png" alt="Examples of clothing and appearance changes in CapFiCA" class="detail-media" loading="lazy">
+          <p>
+            I built and manually corrected CapFiCA: five videos and 4,348 frames covering clothing changes,
+            accessory changes, occlusion, pose variation, and crossings. The final evaluation uses held-out
+            CapFiCA4 and six cross-scene WEPDTOF sequences with TrackEval.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <section id="volumetric-clouds" class="project expandable">
       <div class="project-media">
@@ -185,7 +234,7 @@
           <p>This is our personalised introduction project video.</p>
           <div class="video-embed">
             <iframe
-              src="https://www.youtube.com/watch?v=KJRPb2WWFjI"
+              src="https://www.youtube.com/embed/KJRPb2WWFjI?rel=0&modestbranding=1&playsinline=1"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

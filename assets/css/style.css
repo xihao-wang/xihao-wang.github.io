@@ -125,6 +125,33 @@ h2{ margin:1.6rem 0 .6rem; }
   border-radius:12px; background:#ddd;
 }
 .project .btn{ margin-top:8px; }
+.project-highlight{
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:8px;
+  padding:24px;
+  margin:16px 0 26px;
+  color:#111827;
+}
+.project-kicker{
+  margin:0 0 4px;
+  color:#475569;
+  font-size:.9rem;
+  font-weight:700;
+  text-transform:uppercase;
+}
+.project-actions{ display:flex; flex-wrap:wrap; gap:10px; margin:12px 0 2px; }
+.project-actions .btn{ margin-right:0; }
+.detail-media{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:520px;
+  object-fit:contain;
+  border-radius:8px;
+  background:#fff;
+  margin:10px 0 14px;
+}
 
 /* === 页脚（补缺；与你的 .soft-footer 不冲突） === */
 .site-footer{
@@ -316,6 +343,13 @@ main.container{
 .card-body{ padding: 12px 14px; }
 .card-body h3{ margin: .2rem 0 .3rem; font-size: 1.05rem; }
 .card-body p{ margin: 0; color: var(--muted); }
+.card-featured{ grid-column:span 2; }
+.card-featured img{ height:210px; }
+@media (max-width:900px){
+  .card-featured{ grid-column:span 1; }
+  .card-featured img{ height:180px; }
+  .project-highlight{ padding:18px; }
+}
 
 
 :root{
