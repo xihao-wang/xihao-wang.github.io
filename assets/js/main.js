@@ -8,21 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const video = document.getElementById("heroVideo");
   const image = document.getElementById("heroImage");
   const captionEl = document.getElementById("heroCaption");
+  const isChinese = document.documentElement.lang.toLowerCase().startsWith('zh');
 
   if (!video || !image) return;
 
   // 播放列表：type= 'video' 或 'image'
   const playlist = [
-    { type: 'video', src: 'assets/videos/cloud1.mp4', rate: 2.0, poster: 'assets/images/show1.jpg' ,caption: 'Volumetric clouds'},
-    { type: 'video', src: 'assets/videos/cloud2.mp4', rate: 1.5, poster: 'assets/images/show2.jpg',caption: 'Volumetric clouds' },
-    { type: 'image', src: 'assets/images/p2.png', duration: 2500 ,caption: 'Photo Mosaic'},
-    { type: 'image', src: 'assets/images/p3.png', duration: 2500 ,caption: 'Photo Mosaic'},
-    { type: 'image', src: 'assets/images/p0.png', duration: 2500 ,caption: 'Photo Mosaic'},
-    { type: 'image', src: 'assets/images/p1.png', duration: 2500 ,caption: 'Photo Mosaic'},
-    { type: 'video', src: 'assets/videos/show3.mp4', rate: 1.75 ,caption: 'Game Engine : ★Star engine★'},
-    { type: 'image', src: 'assets/images/r0.png', duration: 2500 ,caption: 'Ray tracing : Cornell Box'},
-    { type: 'image', src: 'assets/images/r1.png', duration: 2500 ,caption: 'Ray tracing : Cornell Box'},
-    { type: 'image', src: 'assets/images/r2.png', duration: 2500 ,caption: 'Ray tracing : World'}
+    { type: 'video', src: 'assets/videos/cloud1.mp4', rate: 2.0, poster: 'assets/images/show1.jpg', caption: isChinese ? '体积云' : 'Volumetric clouds'},
+    { type: 'video', src: 'assets/videos/cloud2.mp4', rate: 1.5, poster: 'assets/images/show2.jpg', caption: isChinese ? '体积云' : 'Volumetric clouds' },
+    { type: 'image', src: 'assets/images/p2.png', duration: 2500, caption: isChinese ? '照片马赛克' : 'Photo Mosaic'},
+    { type: 'image', src: 'assets/images/p3.png', duration: 2500, caption: isChinese ? '照片马赛克' : 'Photo Mosaic'},
+    { type: 'image', src: 'assets/images/p0.png', duration: 2500, caption: isChinese ? '照片马赛克' : 'Photo Mosaic'},
+    { type: 'image', src: 'assets/images/p1.png', duration: 2500, caption: isChinese ? '照片马赛克' : 'Photo Mosaic'},
+    { type: 'video', src: 'assets/videos/show3.mp4', rate: 1.75, caption: isChinese ? '三维游戏引擎：★Star Engine★' : 'Game Engine: ★Star Engine★'},
+    { type: 'image', src: 'assets/images/r0.png', duration: 2500, caption: isChinese ? '光线追踪：Cornell Box' : 'Ray tracing: Cornell Box'},
+    { type: 'image', src: 'assets/images/r1.png', duration: 2500, caption: isChinese ? '光线追踪：Cornell Box' : 'Ray tracing: Cornell Box'},
+    { type: 'image', src: 'assets/images/r2.png', duration: 2500, caption: isChinese ? '光线追踪：World 场景' : 'Ray tracing: World'}
   ];
 
   let idx = 0;

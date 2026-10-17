@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Portfolio — Xihao Wang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="nav-start">
+        <a class="language-switch" href="portfolio.html" lang="zh-CN" hreflang="zh-CN">中文</a>
+        <a class="brand" href="index-en.html">Xihao Wang</a>
+      </div>
+      <nav>
+        <a href="about-en.html">About</a>
+        <a class="active" href="portfolio-en.html">Portfolio</a>
+        <a href="https://github.com/xihao-wang" target="_blank" rel="noopener">GitHub</a>
+        <a href="assets/doc/CV-XihaoWang-en.pdf" target="_blank" rel="noopener">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Portfolio</h1>
+
+    <section id="fitac-mot" class="project expandable project-highlight">
+      <div class="project-media">
+        <img src="assets/images/fitac/result.png" alt="FiTAC-MOT tracking identities in a fisheye frame">
+      </div>
+      <div class="project-body">
+        <p class="project-kicker">Caplogy Innovation · Computer Vision Internship · 2026</p>
+        <h2>FiTAC-MOT — Fisheye Tracking under Appearance Changes</h2>
+        <p>
+          A multi-object tracking system for overhead fisheye video, designed to preserve pedestrian
+          identities through clothing, accessory, pose, scale, and viewpoint changes. The pipeline combines
+          gnomonic projection, YOLOv9e detections, OSNet/FastReID embeddings, short- and long-term memory,
+          learned temporal association, Hungarian matching, and AFLink.
+        </p>
+        <p><strong>Results:</strong> 61.423 HOTA and 55.837 IDF1 on held-out CapFiCA4 with AFLink;
+          46.573 HOTA and 56.747 IDF1 across six WEPDTOF scenes.</p>
+        <p><strong>Tech:</strong> Python, PyTorch, OpenCV, YOLOv9e, OSNet, FastReID, attention, TrackEval</p>
+        <div class="project-actions">
+          <a class="btn" href="https://github.com/xihao-wang/FiTAC-MOT" target="_blank" rel="noopener">Project Repository</a>
+          <a class="btn btn-outline" href="assets/doc/FiTAC-MOT-Internship-Report.pdf" target="_blank" rel="noopener">Internship Report</a>
+        </div>
+        <button class="toggle-btn" aria-expanded="false" aria-label="Show FiTAC-MOT details">▼</button>
+        <div class="details">
+          <h3>Complete inference pipeline</h3>
+          <img src="assets/images/fitac/pipeline.png" alt="Fisheye gnomonic projection detection and tracking pipeline" class="detail-media" loading="lazy">
+          <p>
+            Fisheye frames are projected into overlapping gnomonic views for person detection, then mapped
+            back to the original image. Affine correction creates cleaner ReID crops before online association.
+          </p>
+
+          <h3>Learned temporal association</h3>
+          <img src="assets/images/fitac/tracker-architecture.png" alt="OSNet and FastReID temporal tracking architecture" class="detail-media" loading="lazy">
+          <p>
+            I built the OSNet reference branch and a FastReID temporal branch with a 5-frame STM and
+            30-frame LTM. A TemporalAttentionScorer projects 2048-dimensional ReID features to 256 dimensions,
+            queries recent memory with the current detection, and learns a gated long-term context.
+          </p>
+
+          <h3>Dataset and evaluation</h3>
+          <img src="assets/images/fitac/appearance-change.png" alt="Examples of clothing and appearance changes in CapFiCA" class="detail-media" loading="lazy">
+          <p>
+            I built and manually corrected CapFiCA: five videos and 4,348 frames covering clothing changes,
+            accessory changes, occlusion, pose variation, and crossings. The final evaluation uses held-out
+            CapFiCA4 and six cross-scene WEPDTOF sequences with TrackEval.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="volumetric-clouds" class="project expandable">
+      <div class="project-media">
+        <img src="assets/images/cloud.png" alt="">
+      </div>
+      <div class="project-body">
+        <h2>Volumetric Clouds</h2>
+        <p>
+          We implement volumetric clouds with ray marching and physically-based lighting
+          (Beer–Lambert extinction, in-/out-scattering, Henyey–Greenstein phase). Generation
+          explores three pistes: a sphere-based procedural shape (Perlin/FBM + domain warping + remap curve),
+          a 3D noise texture pipeline, and a particle approach.
+        </p>
+        <p><strong>Tech:</strong> GLSL, 3D textures, ray marching, Beer–Lambert, Henyey–Greenstein, (optional) GPU particles</p>
+    
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+        <!-- ↓ 折叠内容 -->
+        <div class="details">
+    
+          <!-- Piste 1: Sphere -->
+          <h3>Sphere-based Shape</h3>
+          <p>
+            Start from a base sphere and inject noise: Perlin → FBM (multi-octave) → domain warping,
+            then remap with an R-curve to sculpt the final density field. This yields controllable macro-shape
+            with rich detail.
+          </p>
+          <img src="assets/videos/move.gif" alt="demo gif" class="gif-media" loading="lazy" decoding="async">
+          <p>
+            Lighting is computed by single scattering with Beer–Lambert transmittance and a Henyey–Greenstein phase function, producing soft shadows and view-dependent highlights around the light direction.
+          </p>
+          <video src="assets/videos/powder.mp4" controls></video>
+    
+          <!-- Piste 2: Texture 3D -->
+          <h3>Texture 3D</h3>
+          <p>
+            Precompute a 3D noise texture (Perlin + FBM, optionally warped) and sample it along the march
+            to drive density—simple, fast, and stable; easy to tune by frequency/amplitude per octave. 
+          </p>
+          <video src="assets/videos/texture3d.mp4" controls></video>
+    
+          <!-- Piste 3: Particle -->
+          <h3>Particle</h3>
+          <p>
+            A particle cloud (impostors/voxels) updated on GPU; good for dynamic behaviors but heavier for
+            shadows and bandwidth, so we keep it as an experimental path. 
+          </p>
+          <video src="assets/videos/particles.mp4" controls></video>
+          <p><a class="btn" href="assets/doc/Rapport_TER (4).pdf" target="_blank">view the doc.</a></p>
+          
+        </div>
+      </div>
+    </section>
+
+    <section id="pbr-ibl" class="project expandable">
+      <div class="project-media">
+        <img src="assets/images/game.png" alt="">
+      </div>
+      <div class="project-body">
+        <h2>Star Engine — PBR & Engine Tools</h2>
+        <p>
+          Developed as part of the <strong>NITNINDO</strong> team project, <em>Star Engine</em> is a modular and optimized 3D game engine built in C++ and OpenGL.
+          It integrates a complete <strong>Physically Based Rendering (PBR)</strong> system with environment cubemaps, light probes, and material workflow 
+          supporting albedo, normal, roughness, metalness, and AO maps.
+        </p>
+        <p>
+          The engine also includes scene editing tools, an in-engine photo capture system, octahedral shadow mapping, skeletal animation
+          (keyframe interpolation, skinning via vertex shader), and a rigid-body physics module with collision layers and masks.
+        </p>
+        <p><strong>Tech:</strong> C++, OpenGL, GLSL, Assimp, ECS, PBR/IBL, Animation, Physics</p>
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+          <!-- ↓ 折叠内容 -->
+        <div class="details">
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/D3xgDrWgewE?rel=0&modestbranding=1&playsinline=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+              loading="lazy">
+            </iframe>
+          </div>
+          <p>
+            <em>Star Engine</em> demonstrates a flexible entity-component architecture, real-time lighting with physically-accurate shading, 
+            octahedral shadow projection, GPU-based skinning, and an integrated editor for material and scene manipulation.
+          </p>
+          <p><a class="btn" href="assets/doc/Oral moteur de jeu (1).pdf" target="_blank">view the doc.</a></p>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="denoising" class="project expandable">
+      <div class="project-media">
+        <img src="assets/images/denoising.png" alt="">
+      </div>
+      <div class="project-body">
+        <h2>Denoising Auto-Encoder with GAN</h2>
+        <p>
+          This project aims to remove noise from CIFAR-10 images using a deep learning pipeline that combines 
+          <strong>convolutional auto-encoders</strong> for feature extraction and a <strong>GAN</strong> architecture 
+          for visual quality enhancement.
+        </p>
+        <p><strong>Tech:</strong> Python, PyTorch, CNN, Auto-Encoder, GAN, PSNR/SSIM evaluation</p>
+    
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+        <!-- ↓ 折叠内容 -->
+        <div class="details">
+          <h3>Goal</h3>
+          <p>
+            Build a denoising engine that can restore <strong>noisy images</strong> under multiple noise types
+            (random / salt & pepper / Gaussian / dynamic range expansion noise) with a learning-based pipeline.
+            We focus on <strong>128x128</strong> images and evaluate quality using <strong>PSNR</strong> and visual comparisons.
+          </p>
+
+          <video src="assets/videos/denoise.mp4" controls>demonstration of our denoiser_engine</video>
+
+          <h3>Pipeline (VAE + U-Net + Paired-based GAN)</h3>
+          <ul>
+            <li>
+              <strong>VAE</strong>: learns a compact latent representation and reconstructs a clean image from a noisy input.
+            </li>
+            <li>
+              <strong>U-Net refinement</strong>: introduces skip connections to preserve spatial details and improve reconstruction sharpness.
+            </li>
+            <li>
+              <strong>Paired-based GAN</strong> (final stable version):
+              the discriminator receives pairs <code>(noisy, clean)</code> vs <code>(noisy, recon)</code>,
+              encouraging the model to learn the <em>noise residual</em> more directly, improving stability.
+            </li>
+          </ul>
+
+          <h3>Noise cases explored</h3>
+          <ul>
+            <li><strong>Classic noise</strong>: random / salt & pepper / Gaussian (weak & strong).</li>
+            <li><strong>Dynamic range expansion noise</strong>: produces distinctive histogram “spikes” compared to classic noise.</li>
+          </ul>
+
+          <h3>Results (PSNR highlights)</h3>
+          <p>
+            On <strong>128x128</strong> images, adding U-Net gives the largest boost, and the final paired-based GAN brings a small but
+            consistent improvement while remaining stable.
+          </p>
+          <ul>
+            <li><strong>Weak noise</strong> (128x128): VAE+U-Net ≈ <strong>33.93 dB</strong> → +GAN ≈ <strong>34.06 dB</strong></li>
+            <li><strong>Strong noise</strong> (128x128): VAE+U-Net ≈ <strong>26.04 dB</strong> → +GAN ≈ <strong>26.13 dB</strong></li>
+          </ul>
+
+          <h3>What we learned</h3>
+          <ul>
+            <li>
+              A “global GAN” over the whole image can be <strong>unstable</strong> (training collapse) and may limit improvements.
+            </li>
+            <li>
+              Changing the GAN/VAE rhythm and introducing GAN after VAE pretraining helps, but the most reliable approach
+              was the <strong>paired-based</strong> discriminator setup.
+            </li>
+            <li>
+              A practical next step is <strong>one model per noise type</strong>, plus a classifier to detect noise and route to the right denoiser.
+            </li>
+          </ul>
+          <p>This is our personalised introduction project video.</p>
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/KJRPb2WWFjI?rel=0&modestbranding=1&playsinline=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="project-links">
+            <p>
+              <a class="btn" href="https://github.com/VigKillian/denoiser_engine" target="_blank" rel="noopener">GitHub Repo</a>
+              <a class="btn" href="assets/doc/Projet denoiser engine - soutenance finale.pdf" target="_blank" rel="noopener">Slides (PDF)</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="raytracer" class="project expandable">
+      <div class="project-media">
+        <img src="assets/images/raytracer.png" alt="">
+      </div>
+      <div class="project-body">
+        <h2>Ray Tracer in CPU</h2>
+        <p>Recursive reflection & refraction, transparent and rough materials; Kd-Tree acceleration.</p>
+        <p><strong>Tech:</strong> C++, OpenGL, BVH/Kd-Tree</p>
+        <p><a class="btn" href="assets/doc/HAI719I_TP_RayTracing_2 (1).pdf" target="_blank">view the doc.</a></p>
+        
+      </div>
+    </section>
+
+    <section id="mosaic" class="project expandable">
+      <div class="project-media">
+        <img src="assets/images/p1.png" alt="">
+      </div>
+      <div class="project-body">
+        <h2>Photo Mosaic</h2>
+        <p>Generates photo mosaics using multiple matching strategies: average color, histogram similarity, and distribution-based matching. Supports batch processing of multiple targets.</p>
+        <p><strong>Tech:</strong> C++/Python, image processing, KD/nearest matching, batching</p>
+        
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+          <!-- ↓ 折叠内容 -->
+        <div class="details">
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/txLISvYjGjA?rel=0&modestbranding=1&playsinline=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+              loading="lazy">
+            </iframe>
+          </div>
+          <p><a class="btn" href="assets/doc/Projet de photo-mosaïque avec critères avancés (1).pdf" target="_blank">view the doc.</a></p>
+
+        </div>
+      </div>
+
+    </section>
+
+
+
+    <!-- Serious Game (Programming Puzzle) -->
+    <section id="serious-godot" class="project expandable">
+      <div class="project-media">
+        <img src="assets/images/serieux.png" alt="">
+      </div>
+      <div class="project-body">
+        <h2>Serious Game — Ebucliper (Godot)</h2>
+        <p>
+          <em>Ebucliper</em> is a serious game designed to teach the fundamentals of programming — 
+          instructions, loops, and functions — through hands-on construction puzzles.
+          The player programs a robot named <strong>Blocky 2000</strong> to rebuild the University of Montpellier campus.
+        </p>
+        <p><strong>Tech:</strong> Godot (GDScript), 3D grid logic, Tween animation, data persistence, UI/UX design</p>
+
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+        <!-- ↓ 折叠内容 -->
+        <div class="details">
+          <h3>Gameplay</h3>
+          <p>
+            Players combine instruction blocks — move, rotate, place — to guide Blocky in building target structures
+            within a voxel grid. Success is rewarded with stars based on efficiency and correctness.
+          </p>
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/OxcghjVXqGs?rel=0&modestbranding=1&playsinline=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+              loading="lazy">
+            </iframe>
+          </div>
+
+          <h3>Learning Design</h3>
+          <p>
+            Each level introduces new programming notions progressively. 
+            Players think, test, and iterate — mimicking the real coding process in an intuitive, visual way.
+          </p>
+          <p><a class="btn" href="https://crhonopose.itch.io/ebucilper" target="_blank">Play the game</a></p>
+          <p><a class="btn" href="assets/doc/GDD ebucliper.pdf" target="_blank">view the doc.</a></p>
+        </div>
+      </div>
+    </section>
+
+  <!-- Game of AI (Godot) -->
+    <section id="ai-godot" class="project expandable">
+      <div class="project-media">
+        <img src="assets/images/dos.png" alt="">
+      </div>
+      <div class="project-body">
+        <h2>Game of AI (Godot)</h2>
+        <p>A competitive simulation between intelligent agents.
+          The game features <strong>Starships</strong> (collectors) and a <strong>Guardian</strong> (defender),
+          each controlled by distinct AI strategies with tunable parameters.</p>
+        <p><strong>Tech:</strong> Godot (GDScript), state evaluation, heuristics, simulation loop</p>
+        <button class="toggle-btn" aria-expanded="false">▼</button>
+          <!-- ↓ 折叠内容 -->
+        <div class="details">
+          <h3>Gameplay</h3>
+          <p>
+            Starships attempt to gather resources from the opposing zone and return safely,
+            while the Guardian patrols to intercept them. If caught outside the safe zone,
+            Starships lose all collected resources and respawn.
+          </p>
+
+          <h3>AI Strategies</h3>
+          <p>
+            Several strategies are implemented and compared:
+            random wandering, directed pursuit, radius-based detection,
+            and “teacher” (adaptive) agents that learn by observation.
+            Parameters such as speed, detection radius, and chase behavior influence success rates.
+          </p>
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/LBcVrEdwv5Q?rel=0&modestbranding=1&playsinline=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+  </main>
+
+
+  <footer class="site-footer">
+    <div class="container">
+      © <span id="year"></span> Xihao Wang.
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Xihao Wang — Computer Vision & Deep Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Computer vision, deep learning and visual computing portfolio by Xihao Wang.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="soft-bg">
+  <header class="site-header soft-header">
+    <div class="container nav">
+      <div class="nav-start">
+        <a class="language-switch" href="index.html" lang="zh-CN" hreflang="zh-CN">中文</a>
+        <a class="brand" href="index-en.html">Xihao Wang</a>
+      </div>
+      <nav>
+        <a href="about-en.html">About</a>
+        <a href="portfolio-en.html">Portfolio</a>
+        <a href="https://github.com/xihao-wang" target="_blank" rel="noopener">GitHub</a>
+        <a href="assets/doc/CV-XihaoWang-en.pdf" target="_blank" rel="noopener">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ====== HERO：左侧个人卡片 + 文案按钮 ｜ 右侧大图 ====== -->
+  <section class="hero container">
+    <div class="hero-left">
+      <!-- 个人卡片放在左侧文案“上方” -->
+      <aside class="profile small">
+        <img class="avatar" src="assets/images/avatar.png" alt="Avatar of Xihao Wang">
+        <h2 class="muted">Xihao Wang</h2>
+        <p class="muted">M2 IMAGINE · Computer Vision · Deep Learning · Visual Computing</p>
+        <p class="muted">📍 Montpellier, France</p>
+        <div class="links">
+          <a href="mailto:xihao.wang201908@gmail.com">Email</a>
+          <a href="https://github.com/xihao-wang" target="_blank" rel="noopener">GitHub Profile</a>
+          <a href="https://www.linkedin.com/in/xihao-wang-56970138a/" target="_blank">LinkedIn</a>
+        </div>
+      </aside>
+
+      <h1 class="hero-title">Welcome</h1>
+      <p class="hero-lead">
+        Hi, I'm Xihao, a Master's student in the IMAGINE program at Université de Montpellier.
+        I build computer vision and deep learning systems for multi-object tracking, image restoration,
+        and 3D visual computing.
+      </p>
+      <div class="cta">
+        <a class="btn" href="about-en.html">About me</a>
+        <a class="btn btn-outline" href="portfolio-en.html">See portfolio</a>
+      </div>
+    </div>
+
+    <figure class="hero-right">
+      <video id="heroVideo" class="hero-video" muted playsinline></video>
+      <img id="heroImage" class="hero-image" alt="Showcase image">
+      <figcaption id="heroCaption" class="hero-caption"></figcaption>
+    </figure>
+  </section>
+
+  <!-- ====== Featured Projects：内容保持不变 ====== -->
+  <main class="container">
+    <h2 class="mt">Featured Projects</h2>
+    <div class="cards">
+      <a class="card card-featured" href="portfolio-en.html#fitac-mot">
+        <img src="assets/images/fitac/result.png" alt="FiTAC-MOT fisheye tracking result">
+        <div class="card-body">
+          <h3>FiTAC-MOT</h3>
+          <p>Fisheye multi-object tracking under clothing and appearance changes with learned temporal memory.</p>
+        </div>
+      </a>
+      <a class="card" href="portfolio-en.html#volumetric-clouds">
+        <img src="assets/images/cloud.png" alt="">
+        <div class="card-body">
+          <h3>Volumetric Clouds</h3>
+          <p>Ray marching with 3D noise, lighting &amp; phase functions.</p>
+        </div>
+      </a>
+      <a class="card" href="portfolio-en.html#pbr-ibl">
+        <img src="assets/images/game.png" alt="">
+        <div class="card-body">
+          <h3>Game Engine</h3>
+          <p>Cook-Torrance, GGX, prefiltered env, irradiance map (OpenGL/GLSL).</p>
+        </div>
+      </a>
+
+      <a class="card" href="portfolio-en.html#raytracer">
+        <img src="assets/images/raytracer.png" alt="">
+        <div class="card-body">
+          <h3>Ray Tracer</h3>
+          <p>Reflection, refraction, transparency with Kd-Tree acceleration.</p>
+        </div>
+      </a>
+      <a class="card" href="portfolio-en.html#mosaic">
+        <img src="assets/images/p1.png" alt="">
+        <div class="card-body">
+          <h3>Photo Mosaic</h3>
+          <p>Tile-based photo mosaics: average/histogram/distribution matching + batching.</p>
+        </div>
+      </a>
+
+      <a class="card" href="portfolio-en.html#denoising">
+        <img src="assets/images/denoising.png" alt="">
+        <div class="card-body">
+          <h3>Denoising Auto-Encoder with GAN</h3>
+          <p>Deep-learning pipeline combining auto-encoder and adversarial training for image noise reduction.</p>
+        </div>
+      </a>
+      
+      <!-- Serious Game (Programming Puzzle) -->
+      <a class="card" href="portfolio-en.html#serious-godot">
+        <img src="assets/images/serieux.png" alt="">
+        <div class="card-body">
+          <h3>Serious Game — Programming Puzzle (Godot)</h3>
+          <p>A learning-by-doing coding puzzle game built in Godot.</p>
+        </div>
+      </a>
+      
+      <!-- Game of AI (Godot) -->
+      <a class="card" href="portfolio-en.html#ai-godot">
+        <img src="assets/images/dos.png" alt="">
+        <div class="card-body">
+          <h3>Game of AI (Godot)</h3>
+          <p>Agents with different strategies; evaluation, heuristics, and behavior tuning.</p>
+        </div>
+      </a>
+
+      
+
+      
+
+      
+    </div>
+  </main>
+
+  <footer class="site-footer soft-footer">
+    <div class="container">
+      © <span id="year"></span> Xihao Wang. Built with plain HTML/CSS.
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

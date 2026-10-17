@@ -51,8 +51,23 @@ main.container.narrow{
   background:#fff;
   position:sticky; top:0; z-index:10;
 }
-.site-header .nav{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+.site-header .nav{ display:flex; align-items:center; justify-content:space-between; min-height:64px; gap:18px; }
+.nav-start{ display:flex; align-items:center; gap:14px; min-width:max-content; }
 .brand{ font-weight:700; color:var(--brand); text-decoration:none; }
+.language-switch{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  color:var(--brand);
+  text-decoration:none;
+  font-size:.92rem;
+  font-weight:650;
+  padding:6px 10px;
+  border:1px solid rgba(15,23,42,.16);
+  border-radius:999px;
+  background:rgba(255,255,255,.52);
+}
+.language-switch:hover{ background:#fff; }
 
 /* 右侧链接行（补缺） */
 .site-header nav a{
@@ -303,6 +318,9 @@ main.container{
 @media (max-width: 960px){
   .hero{ grid-template-columns: 1fr; gap: 18px; }
   .hero-right img{ height: clamp(240px, 44vh, 480px); }
+  .site-header .nav{ align-items:flex-start; flex-direction:column; padding-top:10px; padding-bottom:10px; }
+  .site-header nav{ display:flex; flex-wrap:wrap; gap:4px; }
+  .site-header nav a{ margin-left:0; }
 }
 
 /* === 卡片网格（Featured Projects 用到） === */

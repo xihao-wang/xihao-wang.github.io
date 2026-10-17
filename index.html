@@ -1,21 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <title>Xihao Wang — Computer Vision & Deep Learning</title>
+  <title>王曦浩｜计算机视觉、深度学习与计算机图形学</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Computer vision, deep learning and visual computing portfolio by Xihao Wang.">
+  <meta name="description" content="王曦浩的个人作品集，涵盖计算机视觉、深度学习、图像处理与计算机图形学。">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="soft-bg">
   <header class="site-header soft-header">
     <div class="container nav">
-      <a class="brand" href="/">Xihao Wang</a>
+      <div class="nav-start">
+        <a class="language-switch" href="index-en.html" lang="en" hreflang="en">English</a>
+        <a class="brand" href="index.html">王曦浩</a>
+      </div>
       <nav>
-        <a href="about.html">About</a>
-        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">关于我</a>
+        <a href="portfolio.html">作品集</a>
         <a href="https://github.com/xihao-wang" target="_blank" rel="noopener">GitHub</a>
-        <a href="assets/doc/CV-XihaoWang-en.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="assets/doc/CV-XihaoWang-en.pdf" target="_blank" rel="noopener">英文简历</a>
       </nav>
     </div>
   </header>
@@ -25,26 +28,25 @@
     <div class="hero-left">
       <!-- 个人卡片放在左侧文案“上方” -->
       <aside class="profile small">
-        <img class="avatar" src="assets/images/avatar.png" alt="Avatar of Xihao Wang">
-        <h2 class="muted">Xihao Wang</h2>
-        <p class="muted">M2 IMAGINE · Computer Vision · Deep Learning · Visual Computing</p>
-        <p class="muted">📍 Montpellier, France</p>
+        <img class="avatar" src="assets/images/avatar.png" alt="王曦浩头像">
+        <h2 class="muted">王曦浩</h2>
+        <p class="muted">IMAGINE 硕士 · 计算机视觉 · 深度学习 · 计算机图形学</p>
+        <p class="muted">📍 法国蒙彼利埃</p>
         <div class="links">
-          <a href="mailto:xihao.wang201908@gmail.com">Email</a>
-          <a href="https://github.com/xihao-wang" target="_blank" rel="noopener">GitHub Profile</a>
+          <a href="mailto:xihao.wang201908@gmail.com">邮箱</a>
+          <a href="https://github.com/xihao-wang" target="_blank" rel="noopener">GitHub 主页</a>
           <a href="https://www.linkedin.com/in/xihao-wang-56970138a/" target="_blank">LinkedIn</a>
         </div>
       </aside>
 
-      <h1 class="hero-title">Welcome</h1>
+      <h1 class="hero-title">欢迎来到我的作品集</h1>
       <p class="hero-lead">
-        Hi, I'm Xihao, a Master's student in the IMAGINE program at Université de Montpellier.
-        I build computer vision and deep learning systems for multi-object tracking, image restoration,
-        and 3D visual computing.
+        你好，我是王曦浩，蒙彼利埃大学 IMAGINE 方向计算机科学硕士研究生。
+        我的工作涵盖计算机视觉与深度学习系统，包括多目标跟踪、图像恢复和三维视觉计算。
       </p>
       <div class="cta">
-        <a class="btn" href="about.html">About me</a>
-        <a class="btn btn-outline" href="portfolio.html">See portfolio</a>
+        <a class="btn" href="about.html">关于我</a>
+        <a class="btn btn-outline" href="portfolio.html">查看作品</a>
       </div>
     </div>
 
@@ -57,50 +59,50 @@
 
   <!-- ====== Featured Projects：内容保持不变 ====== -->
   <main class="container">
-    <h2 class="mt">Featured Projects</h2>
+    <h2 class="mt">精选项目</h2>
     <div class="cards">
       <a class="card card-featured" href="portfolio.html#fitac-mot">
         <img src="assets/images/fitac/result.png" alt="FiTAC-MOT fisheye tracking result">
         <div class="card-body">
           <h3>FiTAC-MOT</h3>
-          <p>Fisheye multi-object tracking under clothing and appearance changes with learned temporal memory.</p>
+          <p>面向服装及外观变化场景，结合可学习时序记忆的鱼眼视频多目标跟踪系统。</p>
         </div>
       </a>
       <a class="card" href="portfolio.html#volumetric-clouds">
         <img src="assets/images/cloud.png" alt="">
         <div class="card-body">
-          <h3>Volumetric Clouds</h3>
-          <p>Ray marching with 3D noise, lighting &amp; phase functions.</p>
+          <h3>体积云</h3>
+          <p>结合三维噪声、光照和相位函数的 Ray Marching 实时渲染。</p>
         </div>
       </a>
       <a class="card" href="portfolio.html#pbr-ibl">
         <img src="assets/images/game.png" alt="">
         <div class="card-body">
-          <h3>Game Engine</h3>
-          <p>Cook-Torrance, GGX, prefiltered env, irradiance map (OpenGL/GLSL).</p>
+          <h3>三维游戏引擎</h3>
+          <p>基于 OpenGL/GLSL 实现 Cook-Torrance、GGX、预过滤环境贴图与辐照度贴图。</p>
         </div>
       </a>
 
       <a class="card" href="portfolio.html#raytracer">
         <img src="assets/images/raytracer.png" alt="">
         <div class="card-body">
-          <h3>Ray Tracer</h3>
-          <p>Reflection, refraction, transparency with Kd-Tree acceleration.</p>
+          <h3>CPU 光线追踪器</h3>
+          <p>支持反射、折射、透明材质，并使用 Kd-Tree 加速射线求交。</p>
         </div>
       </a>
       <a class="card" href="portfolio.html#mosaic">
         <img src="assets/images/p1.png" alt="">
         <div class="card-body">
-          <h3>Photo Mosaic</h3>
-          <p>Tile-based photo mosaics: average/histogram/distribution matching + batching.</p>
+          <h3>照片马赛克</h3>
+          <p>基于平均色、直方图和分布匹配生成照片马赛克，并支持批量处理。</p>
         </div>
       </a>
 
       <a class="card" href="portfolio.html#denoising">
         <img src="assets/images/denoising.png" alt="">
         <div class="card-body">
-          <h3>Denoising Auto-Encoder with GAN</h3>
-          <p>Deep-learning pipeline combining auto-encoder and adversarial training for image noise reduction.</p>
+          <h3>结合 GAN 的图像去噪自编码器</h3>
+          <p>结合自编码器与对抗训练的深度学习图像去噪流程。</p>
         </div>
       </a>
       
@@ -108,8 +110,8 @@
       <a class="card" href="portfolio.html#serious-godot">
         <img src="assets/images/serieux.png" alt="">
         <div class="card-body">
-          <h3>Serious Game — Programming Puzzle (Godot)</h3>
-          <p>A learning-by-doing coding puzzle game built in Godot.</p>
+          <h3>教育游戏——编程谜题（Godot）</h3>
+          <p>使用 Godot 开发、通过实践学习编程概念的解谜游戏。</p>
         </div>
       </a>
       
@@ -117,8 +119,8 @@
       <a class="card" href="portfolio.html#ai-godot">
         <img src="assets/images/dos.png" alt="">
         <div class="card-body">
-          <h3>Game of AI (Godot)</h3>
-          <p>Agents with different strategies; evaluation, heuristics, and behavior tuning.</p>
+          <h3>AI 对抗游戏（Godot）</h3>
+          <p>实现不同策略的智能体，并进行状态评估、启发式设计与行为调参。</p>
         </div>
       </a>
 
@@ -132,7 +134,7 @@
 
   <footer class="site-footer soft-footer">
     <div class="container">
-      © <span id="year"></span> Xihao Wang. Built with plain HTML/CSS.
+      © <span id="year"></span> 王曦浩。使用原生 HTML/CSS 构建。
     </div>
   </footer>
 

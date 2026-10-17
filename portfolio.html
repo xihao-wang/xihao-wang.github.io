@@ -1,70 +1,72 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <title>Portfolio — Xihao Wang</title>
+  <title>作品集｜王曦浩</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="/">Xihao Wang</a>
+      <div class="nav-start">
+        <a class="language-switch" href="portfolio-en.html" lang="en" hreflang="en">English</a>
+        <a class="brand" href="index.html">王曦浩</a>
+      </div>
       <nav>
-        <a href="about.html">About</a>
-        <a class="active" href="portfolio.html">Portfolio</a>
+        <a href="about.html">关于我</a>
+        <a class="active" href="portfolio.html">作品集</a>
         <a href="https://github.com/xihao-wang" target="_blank" rel="noopener">GitHub</a>
-        <a href="assets/doc/CV-XihaoWang-en.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="assets/doc/CV-XihaoWang-en.pdf" target="_blank" rel="noopener">英文简历</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <h1>Portfolio</h1>
+    <h1>作品集</h1>
 
     <section id="fitac-mot" class="project expandable project-highlight">
       <div class="project-media">
-        <img src="assets/images/fitac/result.png" alt="FiTAC-MOT tracking identities in a fisheye frame">
+        <img src="assets/images/fitac/result.png" alt="FiTAC-MOT 在鱼眼画面中的身份跟踪结果">
       </div>
       <div class="project-body">
-        <p class="project-kicker">Caplogy Innovation · Computer Vision Internship · 2026</p>
-        <h2>FiTAC-MOT — Fisheye Tracking under Appearance Changes</h2>
+        <p class="project-kicker">Caplogy Innovation · 计算机视觉实习 · 2026</p>
+        <h2>FiTAC-MOT——目标外观变化下的鱼眼视频跟踪</h2>
         <p>
-          A multi-object tracking system for overhead fisheye video, designed to preserve pedestrian
-          identities through clothing, accessory, pose, scale, and viewpoint changes. The pipeline combines
-          gnomonic projection, YOLOv9e detections, OSNet/FastReID embeddings, short- and long-term memory,
-          learned temporal association, Hungarian matching, and AFLink.
+          面向顶部鱼眼视频构建的多目标跟踪系统，针对服装、配饰、姿态、尺度和视角变化保持行人身份一致性。
+          系统结合球心投影、YOLOv9e 检测、OSNet/FastReID 外观特征、长短期记忆、
+          可学习时序关联、匈牙利匹配与 AFLink。
         </p>
-        <p><strong>Results:</strong> 61.423 HOTA and 55.837 IDF1 on held-out CapFiCA4 with AFLink;
-          46.573 HOTA and 56.747 IDF1 across six WEPDTOF scenes.</p>
-        <p><strong>Tech:</strong> Python, PyTorch, OpenCV, YOLOv9e, OSNet, FastReID, attention, TrackEval</p>
+        <p><strong>实验结果：</strong>在独立测试集 CapFiCA4 上结合 AFLink 达到 61.423 HOTA 和 55.837 IDF1；
+          在六个 WEPDTOF 跨场景序列上达到 46.573 HOTA 和 56.747 IDF1。</p>
+        <p><strong>技术栈：</strong>Python、PyTorch、OpenCV、YOLOv9e、OSNet、FastReID、注意力机制、TrackEval</p>
         <div class="project-actions">
-          <a class="btn" href="https://github.com/xihao-wang/FiTAC-MOT" target="_blank" rel="noopener">Project Repository</a>
-          <a class="btn btn-outline" href="assets/doc/FiTAC-MOT-Internship-Report.pdf" target="_blank" rel="noopener">Internship Report</a>
+          <a class="btn" href="https://github.com/xihao-wang/FiTAC-MOT" target="_blank" rel="noopener">项目仓库</a>
+          <a class="btn btn-outline" href="assets/doc/FiTAC-MOT-Internship-Report.pdf" target="_blank" rel="noopener">实习报告</a>
         </div>
         <button class="toggle-btn" aria-expanded="false" aria-label="Show FiTAC-MOT details">▼</button>
         <div class="details">
-          <h3>Complete inference pipeline</h3>
-          <img src="assets/images/fitac/pipeline.png" alt="Fisheye gnomonic projection detection and tracking pipeline" class="detail-media" loading="lazy">
+          <h3>完整推理流程</h3>
+          <img src="assets/images/fitac/pipeline.png" alt="鱼眼球心投影、检测与跟踪流程" class="detail-media" loading="lazy">
           <p>
-            Fisheye frames are projected into overlapping gnomonic views for person detection, then mapped
-            back to the original image. Affine correction creates cleaner ReID crops before online association.
+            将鱼眼帧投影为相互重叠的球心视图进行行人检测，再映射回原始画面。
+            在线关联前使用仿射校正生成更规范的 ReID 裁剪图像。
           </p>
 
-          <h3>Learned temporal association</h3>
-          <img src="assets/images/fitac/tracker-architecture.png" alt="OSNet and FastReID temporal tracking architecture" class="detail-media" loading="lazy">
+          <h3>可学习时序关联</h3>
+          <img src="assets/images/fitac/tracker-architecture.png" alt="OSNet 与 FastReID 时序跟踪架构" class="detail-media" loading="lazy">
           <p>
-            I built the OSNet reference branch and a FastReID temporal branch with a 5-frame STM and
-            30-frame LTM. A TemporalAttentionScorer projects 2048-dimensional ReID features to 256 dimensions,
-            queries recent memory with the current detection, and learns a gated long-term context.
+            我构建了 OSNet 参考分支，以及包含 5 帧短期记忆和 30 帧长期记忆的 FastReID 时序分支。
+            TemporalAttentionScorer 将 2048 维 ReID 特征投影到 256 维，使用当前检测查询近期记忆，
+            并通过门控机制学习长期上下文。
           </p>
 
-          <h3>Dataset and evaluation</h3>
-          <img src="assets/images/fitac/appearance-change.png" alt="Examples of clothing and appearance changes in CapFiCA" class="detail-media" loading="lazy">
+          <h3>数据集与评估</h3>
+          <img src="assets/images/fitac/appearance-change.png" alt="CapFiCA 中服装和外观变化示例" class="detail-media" loading="lazy">
           <p>
-            I built and manually corrected CapFiCA: five videos and 4,348 frames covering clothing changes,
-            accessory changes, occlusion, pose variation, and crossings. The final evaluation uses held-out
-            CapFiCA4 and six cross-scene WEPDTOF sequences with TrackEval.
+            我构建并人工校正了 CapFiCA 数据集，共包含 5 段视频和 4,348 帧，覆盖服装及配饰变化、
+            遮挡、姿态变化与行人交汇。最终使用独立测试集 CapFiCA4 和六个 WEPDTOF 跨场景序列，
+            通过 TrackEval 完成评估。
           </p>
         </div>
       </div>
@@ -75,48 +77,46 @@
         <img src="assets/images/cloud.png" alt="">
       </div>
       <div class="project-body">
-        <h2>Volumetric Clouds</h2>
+        <h2>体积云</h2>
         <p>
-          We implement volumetric clouds with ray marching and physically-based lighting
-          (Beer–Lambert extinction, in-/out-scattering, Henyey–Greenstein phase). Generation
-          explores three pistes: a sphere-based procedural shape (Perlin/FBM + domain warping + remap curve),
-          a 3D noise texture pipeline, and a particle approach.
+          使用 Ray Marching 与基于物理的光照实现体积云，包括 Beer–Lambert 消光、内外散射和
+          Henyey–Greenstein 相位函数。项目探索了三种生成方案：基于球体的程序化形状
+          （Perlin/FBM、域扭曲和重映射曲线）、三维噪声纹理流程以及粒子方案。
         </p>
-        <p><strong>Tech:</strong> GLSL, 3D textures, ray marching, Beer–Lambert, Henyey–Greenstein, (optional) GPU particles</p>
+        <p><strong>技术栈：</strong>GLSL、三维纹理、Ray Marching、Beer–Lambert、Henyey–Greenstein、GPU 粒子</p>
     
         <button class="toggle-btn" aria-expanded="false">▼</button>
         <!-- ↓ 折叠内容 -->
         <div class="details">
     
           <!-- Piste 1: Sphere -->
-          <h3>Sphere-based Shape</h3>
+          <h3>基于球体的程序化形状</h3>
           <p>
-            Start from a base sphere and inject noise: Perlin → FBM (multi-octave) → domain warping,
-            then remap with an R-curve to sculpt the final density field. This yields controllable macro-shape
-            with rich detail.
+            从基础球体出发依次加入 Perlin 噪声、多倍频 FBM 和域扭曲，再使用 R 曲线重映射塑造
+            最终密度场，在保证整体形状可控的同时生成丰富细节。
           </p>
           <img src="assets/videos/move.gif" alt="demo gif" class="gif-media" loading="lazy" decoding="async">
           <p>
-            Lighting is computed by single scattering with Beer–Lambert transmittance and a Henyey–Greenstein phase function, producing soft shadows and view-dependent highlights around the light direction.
+            使用 Beer–Lambert 透射率和 Henyey–Greenstein 相位函数计算单次散射，生成柔和阴影以及随视角变化的高光。
           </p>
           <video src="assets/videos/powder.mp4" controls></video>
     
           <!-- Piste 2: Texture 3D -->
-          <h3>Texture 3D</h3>
+          <h3>三维噪声纹理</h3>
           <p>
-            Precompute a 3D noise texture (Perlin + FBM, optionally warped) and sample it along the march
-            to drive density—simple, fast, and stable; easy to tune by frequency/amplitude per octave. 
+            预计算三维噪声纹理（Perlin 与 FBM，可选域扭曲），在步进过程中采样并控制密度。
+            该方案简单、快速且稳定，可按倍频分别调节频率与振幅。
           </p>
           <video src="assets/videos/texture3d.mp4" controls></video>
     
           <!-- Piste 3: Particle -->
-          <h3>Particle</h3>
+          <h3>粒子方案</h3>
           <p>
-            A particle cloud (impostors/voxels) updated on GPU; good for dynamic behaviors but heavier for
-            shadows and bandwidth, so we keep it as an experimental path. 
+            使用 GPU 更新由替身或体素构成的粒子云，适合表现动态行为，但阴影计算和带宽开销较大，
+            因此作为实验性方案保留。
           </p>
           <video src="assets/videos/particles.mp4" controls></video>
-          <p><a class="btn" href="assets/doc/Rapport_TER (4).pdf" target="_blank">view the doc.</a></p>
+          <p><a class="btn" href="assets/doc/Rapport_TER (4).pdf" target="_blank">查看项目报告</a></p>
           
         </div>
       </div>
@@ -127,17 +127,17 @@
         <img src="assets/images/game.png" alt="">
       </div>
       <div class="project-body">
-        <h2>Star Engine — PBR & Engine Tools</h2>
+        <h2>Star Engine——PBR 与引擎工具链</h2>
         <p>
-          Developed as part of the <strong>NITNINDO</strong> team project, <em>Star Engine</em> is a modular and optimized 3D game engine built in C++ and OpenGL.
-          It integrates a complete <strong>Physically Based Rendering (PBR)</strong> system with environment cubemaps, light probes, and material workflow 
-          supporting albedo, normal, roughness, metalness, and AO maps.
+          <em>Star Engine</em> 是在 <strong>NITNINDO</strong> 团队项目中开发的模块化三维游戏引擎，
+          使用 C++ 与 OpenGL 构建并进行性能优化。引擎集成完整的<strong>基于物理的渲染（PBR）</strong>系统，
+          支持环境立方体贴图、光照探针，以及反照率、法线、粗糙度、金属度和 AO 贴图的材质工作流。
         </p>
         <p>
-          The engine also includes scene editing tools, an in-engine photo capture system, octahedral shadow mapping, skeletal animation
-          (keyframe interpolation, skinning via vertex shader), and a rigid-body physics module with collision layers and masks.
+          引擎还包含场景编辑工具、引擎内截图系统、八面体阴影映射、骨骼动画
+          （关键帧插值与顶点着色器蒙皮），以及支持碰撞层和遮罩的刚体物理模块。
         </p>
-        <p><strong>Tech:</strong> C++, OpenGL, GLSL, Assimp, ECS, PBR/IBL, Animation, Physics</p>
+        <p><strong>技术栈：</strong>C++、OpenGL、GLSL、Assimp、ECS、PBR/IBL、骨骼动画、物理系统</p>
         <button class="toggle-btn" aria-expanded="false">▼</button>
           <!-- ↓ 折叠内容 -->
         <div class="details">
@@ -153,10 +153,10 @@
             </iframe>
           </div>
           <p>
-            <em>Star Engine</em> demonstrates a flexible entity-component architecture, real-time lighting with physically-accurate shading, 
-            octahedral shadow projection, GPU-based skinning, and an integrated editor for material and scene manipulation.
+            <em>Star Engine</em> 展示了灵活的实体组件架构、基于物理着色的实时光照、
+            八面体阴影投影、GPU 蒙皮，以及用于材质和场景编辑的集成工具。
           </p>
-          <p><a class="btn" href="assets/doc/Oral moteur de jeu (1).pdf" target="_blank">view the doc.</a></p>
+          <p><a class="btn" href="assets/doc/Oral moteur de jeu (1).pdf" target="_blank">查看项目资料</a></p>
 
         </div>
       </div>
@@ -167,71 +167,69 @@
         <img src="assets/images/denoising.png" alt="">
       </div>
       <div class="project-body">
-        <h2>Denoising Auto-Encoder with GAN</h2>
+        <h2>结合 GAN 的图像去噪自编码器</h2>
         <p>
-          This project aims to remove noise from CIFAR-10 images using a deep learning pipeline that combines 
-          <strong>convolutional auto-encoders</strong> for feature extraction and a <strong>GAN</strong> architecture 
-          for visual quality enhancement.
+          该项目面向 CIFAR-10 图像去噪，构建结合<strong>卷积自编码器</strong>与<strong>生成对抗网络</strong>的
+          深度学习流程，分别用于特征提取与视觉质量提升。
         </p>
-        <p><strong>Tech:</strong> Python, PyTorch, CNN, Auto-Encoder, GAN, PSNR/SSIM evaluation</p>
+        <p><strong>技术栈：</strong>Python、PyTorch、CNN、自编码器、GAN、PSNR/SSIM 评估</p>
     
         <button class="toggle-btn" aria-expanded="false">▼</button>
         <!-- ↓ 折叠内容 -->
         <div class="details">
-          <h3>Goal</h3>
+          <h3>项目目标</h3>
           <p>
-            Build a denoising engine that can restore <strong>noisy images</strong> under multiple noise types
-            (random / salt & pepper / Gaussian / dynamic range expansion noise) with a learning-based pipeline.
-            We focus on <strong>128x128</strong> images and evaluate quality using <strong>PSNR</strong> and visual comparisons.
+            构建基于学习的图像去噪引擎，恢复包含随机噪声、椒盐噪声、高斯噪声和动态范围扩展噪声的图像。
+            项目以 <strong>128×128</strong> 图像为主要输入，通过 <strong>PSNR</strong> 与可视化对比评估质量。
           </p>
 
-          <video src="assets/videos/denoise.mp4" controls>demonstration of our denoiser_engine</video>
+          <video src="assets/videos/denoise.mp4" controls>图像去噪引擎演示</video>
 
-          <h3>Pipeline (VAE + U-Net + Paired-based GAN)</h3>
+          <h3>模型流程（VAE + U-Net + 成对判别 GAN）</h3>
           <ul>
             <li>
-              <strong>VAE</strong>: learns a compact latent representation and reconstructs a clean image from a noisy input.
+              <strong>VAE：</strong>学习紧凑的潜在表示，并从含噪输入中重建干净图像。
             </li>
             <li>
-              <strong>U-Net refinement</strong>: introduces skip connections to preserve spatial details and improve reconstruction sharpness.
+              <strong>U-Net 细化：</strong>通过跳跃连接保留空间细节并提高重建清晰度。
             </li>
             <li>
-              <strong>Paired-based GAN</strong> (final stable version):
-              the discriminator receives pairs <code>(noisy, clean)</code> vs <code>(noisy, recon)</code>,
-              encouraging the model to learn the <em>noise residual</em> more directly, improving stability.
+              <strong>成对判别 GAN</strong>（最终稳定版本）：判别器接收
+              <code>(含噪图像, 干净图像)</code>与<code>(含噪图像, 重建图像)</code>两类图像对，
+              引导模型更直接地学习噪声残差并提升训练稳定性。
             </li>
           </ul>
 
-          <h3>Noise cases explored</h3>
+          <h3>噪声类型</h3>
           <ul>
-            <li><strong>Classic noise</strong>: random / salt & pepper / Gaussian (weak & strong).</li>
-            <li><strong>Dynamic range expansion noise</strong>: produces distinctive histogram “spikes” compared to classic noise.</li>
+            <li><strong>经典噪声：</strong>随机噪声、椒盐噪声以及不同强度的高斯噪声。</li>
+            <li><strong>动态范围扩展噪声：</strong>与经典噪声相比，会产生明显的直方图尖峰。</li>
           </ul>
 
-          <h3>Results (PSNR highlights)</h3>
+          <h3>实验结果（PSNR）</h3>
           <p>
-            On <strong>128x128</strong> images, adding U-Net gives the largest boost, and the final paired-based GAN brings a small but
-            consistent improvement while remaining stable.
+            在 <strong>128×128</strong> 图像上，U-Net 带来了最明显的提升；最终的成对判别 GAN
+            在保持训练稳定的同时取得了小幅且一致的改进。
           </p>
           <ul>
-            <li><strong>Weak noise</strong> (128x128): VAE+U-Net ≈ <strong>33.93 dB</strong> → +GAN ≈ <strong>34.06 dB</strong></li>
-            <li><strong>Strong noise</strong> (128x128): VAE+U-Net ≈ <strong>26.04 dB</strong> → +GAN ≈ <strong>26.13 dB</strong></li>
+            <li><strong>弱噪声</strong>（128×128）：VAE+U-Net ≈ <strong>33.93 dB</strong> → +GAN ≈ <strong>34.06 dB</strong></li>
+            <li><strong>强噪声</strong>（128×128）：VAE+U-Net ≈ <strong>26.04 dB</strong> → +GAN ≈ <strong>26.13 dB</strong></li>
           </ul>
 
-          <h3>What we learned</h3>
+          <h3>项目总结</h3>
           <ul>
             <li>
-              A “global GAN” over the whole image can be <strong>unstable</strong> (training collapse) and may limit improvements.
+              对整幅图像进行全局判别的 GAN 容易出现<strong>训练不稳定或坍塌</strong>，限制模型提升。
             </li>
             <li>
-              Changing the GAN/VAE rhythm and introducing GAN after VAE pretraining helps, but the most reliable approach
-              was the <strong>paired-based</strong> discriminator setup.
+              调整 GAN/VAE 的训练节奏并在 VAE 预训练后引入 GAN 可以改善稳定性，
+              其中最可靠的是<strong>成对判别</strong>设置。
             </li>
             <li>
-              A practical next step is <strong>one model per noise type</strong>, plus a classifier to detect noise and route to the right denoiser.
+              后续可针对<strong>不同噪声分别训练模型</strong>，再使用分类器识别噪声类型并路由到对应去噪器。
             </li>
           </ul>
-          <p>This is our personalised introduction project video.</p>
+          <p>以下视频介绍了项目的完整流程与实验结果。</p>
           <div class="video-embed">
             <iframe
               src="https://www.youtube.com/embed/KJRPb2WWFjI?rel=0&modestbranding=1&playsinline=1"
@@ -245,8 +243,8 @@
           </div>
           <div class="project-links">
             <p>
-              <a class="btn" href="https://github.com/VigKillian/denoiser_engine" target="_blank" rel="noopener">GitHub Repo</a>
-              <a class="btn" href="assets/doc/Projet denoiser engine - soutenance finale.pdf" target="_blank" rel="noopener">Slides (PDF)</a>
+              <a class="btn" href="https://github.com/VigKillian/denoiser_engine" target="_blank" rel="noopener">GitHub 仓库</a>
+              <a class="btn" href="assets/doc/Projet denoiser engine - soutenance finale.pdf" target="_blank" rel="noopener">项目汇报（PDF）</a>
             </p>
           </div>
         </div>
@@ -258,10 +256,10 @@
         <img src="assets/images/raytracer.png" alt="">
       </div>
       <div class="project-body">
-        <h2>Ray Tracer in CPU</h2>
-        <p>Recursive reflection & refraction, transparent and rough materials; Kd-Tree acceleration.</p>
-        <p><strong>Tech:</strong> C++, OpenGL, BVH/Kd-Tree</p>
-        <p><a class="btn" href="assets/doc/HAI719I_TP_RayTracing_2 (1).pdf" target="_blank">view the doc.</a></p>
+        <h2>CPU 光线追踪器</h2>
+        <p>实现递归反射与折射、透明和粗糙材质，并通过 Kd-Tree 加速射线求交。</p>
+        <p><strong>技术栈：</strong>C++、OpenGL、BVH/Kd-Tree</p>
+        <p><a class="btn" href="assets/doc/HAI719I_TP_RayTracing_2 (1).pdf" target="_blank">查看项目报告</a></p>
         
       </div>
     </section>
@@ -271,9 +269,9 @@
         <img src="assets/images/p1.png" alt="">
       </div>
       <div class="project-body">
-        <h2>Photo Mosaic</h2>
-        <p>Generates photo mosaics using multiple matching strategies: average color, histogram similarity, and distribution-based matching. Supports batch processing of multiple targets.</p>
-        <p><strong>Tech:</strong> C++/Python, image processing, KD/nearest matching, batching</p>
+        <h2>照片马赛克</h2>
+        <p>通过平均色、直方图相似度和分布匹配等多种策略生成照片马赛克，并支持多个目标图像的批量处理。</p>
+        <p><strong>技术栈：</strong>C++/Python、图像处理、KD/最近邻匹配、批处理</p>
         
         <button class="toggle-btn" aria-expanded="false">▼</button>
           <!-- ↓ 折叠内容 -->
@@ -289,7 +287,7 @@
               loading="lazy">
             </iframe>
           </div>
-          <p><a class="btn" href="assets/doc/Projet de photo-mosaïque avec critères avancés (1).pdf" target="_blank">view the doc.</a></p>
+          <p><a class="btn" href="assets/doc/Projet de photo-mosaïque avec critères avancés (1).pdf" target="_blank">查看项目报告</a></p>
 
         </div>
       </div>
@@ -304,21 +302,20 @@
         <img src="assets/images/serieux.png" alt="">
       </div>
       <div class="project-body">
-        <h2>Serious Game — Ebucliper (Godot)</h2>
+        <h2>教育游戏——Ebucliper（Godot）</h2>
         <p>
-          <em>Ebucliper</em> is a serious game designed to teach the fundamentals of programming — 
-          instructions, loops, and functions — through hands-on construction puzzles.
-          The player programs a robot named <strong>Blocky 2000</strong> to rebuild the University of Montpellier campus.
+          <em>Ebucliper</em> 是一款通过建筑谜题教授指令、循环和函数等编程基础的教育游戏。
+          玩家需要编程控制名为 <strong>Blocky 2000</strong> 的机器人重建蒙彼利埃大学校园。
         </p>
-        <p><strong>Tech:</strong> Godot (GDScript), 3D grid logic, Tween animation, data persistence, UI/UX design</p>
+        <p><strong>技术栈：</strong>Godot（GDScript）、三维网格逻辑、Tween 动画、数据持久化、UI/UX 设计</p>
 
         <button class="toggle-btn" aria-expanded="false">▼</button>
         <!-- ↓ 折叠内容 -->
         <div class="details">
-          <h3>Gameplay</h3>
+          <h3>玩法设计</h3>
           <p>
-            Players combine instruction blocks — move, rotate, place — to guide Blocky in building target structures
-            within a voxel grid. Success is rewarded with stars based on efficiency and correctness.
+            玩家组合移动、旋转和放置等指令块，引导 Blocky 在体素网格中搭建目标结构。
+            系统根据操作效率和正确性给予星级评价。
           </p>
           <div class="video-embed">
             <iframe
@@ -332,13 +329,12 @@
             </iframe>
           </div>
 
-          <h3>Learning Design</h3>
+          <h3>教学设计</h3>
           <p>
-            Each level introduces new programming notions progressively. 
-            Players think, test, and iterate — mimicking the real coding process in an intuitive, visual way.
+            每个关卡逐步引入新的编程概念。玩家通过思考、测试和迭代，以直观的可视化方式体验真实编程过程。
           </p>
-          <p><a class="btn" href="https://crhonopose.itch.io/ebucilper" target="_blank">Play the game</a></p>
-          <p><a class="btn" href="assets/doc/GDD ebucliper.pdf" target="_blank">view the doc.</a></p>
+          <p><a class="btn" href="https://crhonopose.itch.io/ebucilper" target="_blank">体验游戏</a></p>
+          <p><a class="btn" href="assets/doc/GDD ebucliper.pdf" target="_blank">查看设计文档</a></p>
         </div>
       </div>
     </section>
@@ -349,27 +345,23 @@
         <img src="assets/images/dos.png" alt="">
       </div>
       <div class="project-body">
-        <h2>Game of AI (Godot)</h2>
-        <p>A competitive simulation between intelligent agents.
-          The game features <strong>Starships</strong> (collectors) and a <strong>Guardian</strong> (defender),
-          each controlled by distinct AI strategies with tunable parameters.</p>
-        <p><strong>Tech:</strong> Godot (GDScript), state evaluation, heuristics, simulation loop</p>
+        <h2>AI 对抗游戏（Godot）</h2>
+        <p>这是一个智能体对抗仿真游戏，包含负责收集资源的 <strong>Starships</strong> 和负责防守的
+          <strong>Guardian</strong>，两类角色分别由参数可调的不同 AI 策略控制。</p>
+        <p><strong>技术栈：</strong>Godot（GDScript）、状态评估、启发式策略、仿真循环</p>
         <button class="toggle-btn" aria-expanded="false">▼</button>
           <!-- ↓ 折叠内容 -->
         <div class="details">
-          <h3>Gameplay</h3>
+          <h3>玩法设计</h3>
           <p>
-            Starships attempt to gather resources from the opposing zone and return safely,
-            while the Guardian patrols to intercept them. If caught outside the safe zone,
-            Starships lose all collected resources and respawn.
+            Starships 尝试从对方区域收集资源并安全返回，Guardian 则通过巡逻进行拦截。
+            Starships 如果在安全区外被捕获，将失去已收集的资源并重新生成。
           </p>
 
-          <h3>AI Strategies</h3>
+          <h3>AI 策略</h3>
           <p>
-            Several strategies are implemented and compared:
-            random wandering, directed pursuit, radius-based detection,
-            and “teacher” (adaptive) agents that learn by observation.
-            Parameters such as speed, detection radius, and chase behavior influence success rates.
+            项目实现并比较了随机游走、定向追逐、基于半径的检测，以及通过观察学习的“教师型”自适应智能体。
+            速度、检测半径和追逐行为等参数会直接影响不同角色的成功率。
           </p>
           <div class="video-embed">
             <iframe
@@ -392,7 +384,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      © <span id="year"></span> Xihao Wang.
+      © <span id="year"></span> 王曦浩。
     </div>
   </footer>
 
